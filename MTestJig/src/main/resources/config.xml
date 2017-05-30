@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+
+<properties version="1.0">
+  <entry key="STAR_FILE">Star_Data.xml</entry>
+  <entry key="HELP_FILE">RocketDocument.doc</entry>
+  <entry key="EARTH_COAST_FILE">Earth_coast.dat</entry>
+  <entry key="EARTH_IMG_FILE">flat_earth_by_EnforcedCrowd.jpg</entry>
+  <entry key="MOON_IMG_FILE">moon_Moon_4K_1__Hermes.jpg</entry>
+  <entry key="MQ_HOST_NAME">failover:(tcp://localhost:61616)?timeout=3000&amp;maxReconnectAttempts=3</entry>
+  <entry key="TLI_CRIT_ANGLE">0.905</entry>
+    <entry key="MARS_IMG_FILE">mars.jpg</entry>
+</properties>

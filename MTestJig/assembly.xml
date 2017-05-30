@@ -1,0 +1,42 @@
+<assembly>
+    <id>assembly</id>
+    <formats>
+        <format>zip</format>
+    </formats>
+    <includeBaseDirectory>false</includeBaseDirectory>
+    <!--  Move dependent JARs to assembly's "lib" directory. -->
+    <dependencySets>
+        <dependencySet>
+            <outputDirectory>Rocket/lib</outputDirectory>
+            <excludes>
+                <exclude>GFX:GFX</exclude>
+                <exclude>maven-*</exclude>
+            </excludes>
+        </dependencySet>
+    </dependencySets>
+    <fileSets>
+        <fileSet>
+            <directory>/</directory>
+            <outputDirectory>/Rocket</outputDirectory>
+            <!--<includes>
+                <include>
+                    target/MTestJig-0.0.1-SNAPSHOT-jar-with-dependencies.jar
+                </include>
+            </includes>  -->
+            <excludes>
+                <exclude>src/**</exclude>
+                <exclude>target/**</exclude>
+                <exclude>maven*.*</exclude>
+                <!-- <exclude>target/archive-tmp/**</exclude>
+                <exclude>target/maven-archiver/**</exclude>
+                <exclude>target/test-classes/**</exclude>
+                <exclude>target/*.zip</exclude>
+               <exclude>bin/**</exclude>  -->
+                <exclude>*.iml</exclude>
+                <exclude>.settings/**</exclude>
+                <exclude>.idea/**</exclude>
+
+            </excludes>
+        </fileSet>
+    </fileSets>
+</assembly>

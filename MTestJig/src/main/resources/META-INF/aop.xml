@@ -1,0 +1,10 @@
+<aspectj>
+    <!--<aspects>-->
+        <!--<aspect name="aspect.TestAspect"/>-->
+    <!--</aspects>-->
+    <weaver options="-verbose -showWeaveInfo -Xset:weaveJavaxPackages=false -set:weaveJavaPackages=true">
+        <!-- only weave classes in this package -->
+        <!--<include within="orbits.*" />-->
+        <!--<exclude within="orbits.aspect" />-->
+    </weaver>
+</aspectj>

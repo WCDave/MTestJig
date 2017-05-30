@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE project> 
+<project name="Rocket" default="dist" basedir=".">
+<property name="src" value="./src"/>
+<property name="dist" value="dist"/>
+<property name="bin" value="./bin"/>
+<property name="desktop" value="C:/Documents and Settings/Dave/Desktop/"/>	
+<property name="log4j.filename" value="log4j-1.2.15.jar" />
+
+    <target name="compile" depends="builddependents">
+    	<javac srcdir="${src}" destdir="${bin}" executable="${JAVAC_HOME}\javac" >
+    	<classpath>
+           <pathelement location="${GFX_HOME}/lib/GfxFramework.jar"/>	    	
+           <pathelement location="${JUNIT_HOME}/junit.jar"/>	   
+    	   <pathelement location="${LOG4J_HOME}/${log4j.filename}"/>	    
+	 	</classpath>	    	
+    	</javac>
+	</target>
+	<target name="dist" depends="compile">
+	<jar jarfile="${desktop}/Rocket/Rocket.jar">
+		<fileset dir="${bin}" />
+		<manifest>			
+			<attribute name="Main-Class" value="main.MainApp" />
+			<attribute name="Class-Path" value="GfxFramework.jar log4j-1.2.15.jar"/>	
+		</manifest>
+    </jar>
+	<copy file="RocketDocument.doc" tofile="${desktop}RocketDocument.doc"/>
+	<copy file="star_catalog.txt" tofile="${desktop}star_catalog.txt"/>
+	<copy file="Earth_coast.dat" tofile="${desktop}Earth_coast.dat"/>
+	</target>
+
+	<target name="builddependents">
+		<echo message="building dependents"/>
+	    <ant antfile="build.xml" target="dist" dir="${GFX_HOME}"/>	
+	</target>
+</project>

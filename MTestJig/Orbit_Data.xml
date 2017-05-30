@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<solar-system xmlns="orbitData" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="orbitData">
+    <planet true-anamoly="0.0" eccentricity="0.016709" inclination="0.0" semi-major-axis="1.4959788E11"
+                 radius="6370000.0" ascending-node="0.0" obliquity="23.439281" atmo="true" epoch-longitude="100.46457166" epoch-longitudeDelta="35999.37244981"
+                 arg-of-perhelion="102.899994" mass="5.98E24" perihelion-angle="102.9" mean-anamoly0="356.047" arg-of-perhelionDelta=".32327364" eccentricityDelta="-.00004392"
+                 dm="0.98560023" period="5.7861297E16" mean-anamoly="0.0" rotational-period="23.9345" oblateness="0.0"
+                 epochDateTime="1999-12-31T00:00:00-00:00" inclinationDelta="0"  ascending-nodeDelta="0" semi-major-axisDelta="0" >
+        <planet-name>Earth</planet-name>
+        <color red="165" green="190" blue="231"/>
+    </planet>
+    <planet true-anamoly="0.0" eccentricity="0.0" inclination="0.0" semi-major-axis="0.0" radius="6.96E8"
+                 ascending-node="0.0" obliquity="0.0" atmo="false" epoch-longitude="0.0" epoch-longitudeDelta="0.0" arg-of-perhelion="0.0" mass="1"
+                 perihelion-angle="0.0" mean-anamoly0="0.0" dm="0.0" period="0.0" mean-anamoly="0.0"
+                 rotational-period="0.0" oblateness="0.0" epochDateTime="1999-12-31T00:00:00-00:00" inclinationDelta="0"  ascending-nodeDelta="0" semi-major-axisDelta="0" arg-of-perhelionDelta="0" eccentricityDelta="0">
+        <planet-name>Sun</planet-name>
+        <color red="100" green="100" blue="100"/>
+    </planet>
+    <planet true-anamoly="0.0" eccentricity="0.205635" inclination="7.0047" semi-major-axis="5.7909035E10"
+                 radius="2430000.0" ascending-node="48.3313" obliquity="0.1" atmo="false" epoch-longitude="252.25032350" epoch-longitudeDelta="149472.67411175"
+                 arg-of-perhelion="77.45999" mass="3.18E23" perihelion-angle="77.46" mean-anamoly0="168.6562"
+                 dm="4.0923343" period="1.39354015E16" mean-anamoly="0.0" rotational-period="1407.5" oblateness="0.0"
+                 epochDateTime="1999-12-31T00:00:00-00:00" inclinationDelta="-.00594749" eccentricityDelta=".00001906"
+            arg-of-perhelionDelta=".16047689" ascending-nodeDelta="-.12534081" semi-major-axisDelta="0">
+        <planet-name>Mercury</planet-name>
+        <color red="60" green="56" blue="55"/>
+    </planet>
+    <planet true-anamoly="0.0" eccentricity="0.006773" inclination="3.3946" semi-major-axis="1.08208628E11" inclinationDelta="-.0007889" eccentricityDelta="-.00004107"
+                 radius="6060000.0" ascending-node="76.6799" obliquity="177.4" atmo="true" epoch-longitude="181.97909950" epoch-longitudeDelta="58517.81538729"
+                 arg-of-perhelion="131.6" mass="4.88E24" perihelion-angle="131.6" mean-anamoly0="48.0052" dm="1.6021302"   arg-of-perhelionDelta=".00268329" ascending-nodeDelta="-.27769418"
+                 period="3.55953146E16" mean-anamoly="0.0" rotational-period="5832.5" oblateness="0.0"
+                 epochDateTime="1999-12-31T00:00:00-00:00" semi-major-axisDelta="0" >
+        <planet-name>Venus</planet-name>
+        <color red="215" green="212" blue="207"/>
+    </planet>
+    <planet true-anamoly="0.0" eccentricity="0.093405" inclination="1.8497" semi-major-axis="2.27940467E11" inclinationDelta="-.00813131"
+                 radius="3370000.0" ascending-node="49.5574" obliquity="25.19" atmo="true" epoch-longitude="-4.55343205" epoch-longitudeDelta="19140.30268499"
+                 arg-of-perhelion="-23.94362959" mass="6.42E23" perihelion-angle="336.1" mean-anamoly0="18.6021" arg-of-perhelionDelta=".44441088"
+                 dm="0.5240208" period="1.08825873E17" mean-anamoly="0.0" rotational-period="24.623" oblateness="0.0" eccentricityDelta=".00007882" ascending-nodeDelta="-.29257343"
+                 epochDateTime="1999-12-31T00:00:00-00:00"  semi-major-axisDelta="0" >
+        <planet-name>Mars</planet-name>
+        <!--<color red="255" green="0" blue="0"/>  -->
+        <color red="255" green="218" blue="160"/>
+    </planet>
+    <planet true-anamoly="0.0" eccentricity="0.048498" inclination="1.303" semi-major-axis="7.7829184E11" inclinationDelta="-.00183714" eccentricityDelta="-.00013253"
+                 radius="6.99E7" ascending-node="100.4542" obliquity="3.12" atmo="true" epoch-longitude="34.39644051" epoch-longitudeDelta="3034.74612775"
+                 arg-of-perhelion="14.299988" mass="1.9E27" perihelion-angle="14.3" mean-anamoly0="19.895" arg-of-perhelionDelta=".21252668" ascending-nodeDelta=".20469106"
+                 dm="0.08380853" period="6.8661567E17" mean-anamoly="0.0" rotational-period="9.925" oblateness="0.05"
+                 epochDateTime="1999-12-31T00:00:00-00:00"  semi-major-axisDelta="0" >
+        <planet-name>Jupiter</planet-name>
+        <color red="180" green="164" blue="156"/>
+    </planet>
+    <planet true-anamoly="0.0" eccentricity="0.055546" inclination="2.4886" semi-major-axis="1.42937031E12" eccentricityDelta="-.00050991" inclinationDelta=".00193609"
+                 radius="5.85E7" ascending-node="113.6634" obliquity="26.73" atmo="true" epoch-longitude="49.95424423" epoch-longitudeDelta="1222.49362201"
+                 arg-of-perhelion="93.100006" mass="5.68E26" perihelion-angle="93.1" mean-anamoly0="316.967" ascending-nodeDelta="-.28867794"
+                 dm="0.03344423" period="1.70890193E18" mean-anamoly="0.0" rotational-period="10.656" oblateness="0.05" arg-of-perhelionDelta="-.41897216"
+                 epochDateTime="1999-12-31T00:00:00-00:00" semi-major-axisDelta="0" >
+        <planet-name>Saturn</planet-name>
+        <color red="193" green="184" blue="83"/>
+    </planet>
+    <planet true-anamoly="0.0" eccentricity="0.047318" inclination="0.7733" semi-major-axis="2.86954278E12" inclinationDelta="-.00242939" eccentricityDelta="-.0004397"
+                 radius="2.33E7" ascending-node="74.0005" obliquity="97.86" atmo="true" epoch-longitude="313.23810451" epoch-longitudeDelta="428.48202785"
+                 arg-of-perhelion="170.66168" mass="8.68E25" perihelion-angle="170.6617" mean-anamoly0="142.5905" arg-of-perhelionDelta=".40805281"
+                 dm="0.011725806" period="4.8609266E18" mean-anamoly="0.0" rotational-period="17.24" oblateness="0.0" ascending-nodeDelta=".04240589"
+                 epochDateTime="1999-12-31T00:00:00-00:00" semi-major-axisDelta="0" >
+        <planet-name>Uranus</planet-name>
+        <color red="166" green="193" blue="213"/>
+    </planet>
+    <planet true-anamoly="0.0" eccentricity="0.008606" inclination="1.77" semi-major-axis="4.4966515E12" inclinationDelta=".00035372" eccentricityDelta=".00005105"
+                 radius="2.21E7" ascending-node="131.7806" obliquity="29.56" atmo="true" epoch-longitude="-55.12002969" epoch-longitudeDelta="218.45945325"
+                 arg-of-perhelion="48.100006" mass="1.03E26" perihelion-angle="48.1" mean-anamoly0="260.2471" ascending-nodeDelta="-.00508664"
+                 dm="0.005995147" period="9.535288E18" mean-anamoly="0.0" rotational-period="16.11" oblateness="0.0" arg-of-perhelionDelta="-.32241464"
+                 epochDateTime="1999-12-31T00:00:00-00:00" semi-major-axisDelta="0" >
+        <planet-name>Neptune</planet-name>
+        <color red="144" green="174" blue="224"/>
+    </planet>
+    <planet true-anamoly="0.0" eccentricity="0.248808" inclination="17.14175" semi-major-axis="5.9063764E12" eccentricityDelta=".00005170" inclinationDelta=".0004818"
+                 radius="1500000.0" ascending-node="110.3035" obliquity="119.6" atmo="false" epoch-longitude="238.92903833" epoch-longitudeDelta="145.20780515"
+                 arg-of-perhelion="224.06677" mass="1.4E22" perihelion-angle="224.0668" mean-anamoly0="14.704" arg-of-perhelionDelta="-.04062942"
+                 dm="0.003975571" period="1.4354289E19" mean-anamoly="0.0" rotational-period="153.29" oblateness="0.0" ascending-nodeDelta="-.01183482"
+                 epochDateTime="1999-12-31T00:00:00-00:00" semi-major-axisDelta="0" >
+        <planet-name>Pluto</planet-name>
+        <color red="153" green="153" blue="100"/>
+    </planet>
+    <planet true-anamoly="0.0" eccentricity="0.0757972984872261" inclination="10.58335837260837" semi-major-axis="414062661219.48926"
+                 radius="1500000.0" ascending-node="80.32764144660911" obliquity="119.6" atmo="false" epoch-longitude="163.1773730986625" epoch-longitudeDelta="9917.587603836"
+                 arg-of-perhelion="152.61979262505428" mass="1.4E22" perihelion-angle="72.5898" mean-anamoly0="10.55758047360822"
+                 dm="0.214328" period="1.4354289E19" mean-anamoly="0.0" rotational-period="153.29" oblateness="0.0"
+                 epochDateTime="2013-11-04T00:00:00-00:00" inclinationDelta="0"  ascending-nodeDelta="0" semi-major-axisDelta="0" arg-of-perhelionDelta="0" eccentricityDelta="0">
+        <planet-name>Ceres</planet-name>
+        <color red="0" green="255" blue="0"/>
+    </planet>
+    <planet true-anamoly="0.0" eccentricity="0.08850244223456388" inclination="7.140518203879475" semi-major-axis="353155878339.25714"
+                 radius="1500000.0" ascending-node="18.172807" obliquity="119.6" atmo="false" epoch-longitude="527.2663343448419" epoch-longitudeDelta="9920.9202661933230338634"
+                 arg-of-perhelion="255.0510588966788" mass="1.4E22" perihelion-angle="149.84" mean-anamoly0="138.49976"
+                 dm="0.271524" period="1.4354289E19" mean-anamoly="0.0" rotational-period="153.29" oblateness="0.0"
+                 epochDateTime="2013-11-04T00:00:00-00:00" inclinationDelta="0"  ascending-nodeDelta="0" semi-major-axisDelta="0" arg-of-perhelionDelta="0" eccentricityDelta="0">
+        <planet-name>Vesta</planet-name>
+        <color red="0" green="0" blue="255"/>
+    </planet>
+
+</solar-system>
