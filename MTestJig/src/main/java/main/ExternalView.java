@@ -86,6 +86,11 @@ public class ExternalView extends AbstractView implements KeyListener {
     return viewingCoordSys;
   }
 
+  @Override
+  public int getDetailLevel() {
+    return this.viewType.equals(ViewTypes.ROCKET) ? 14 : 11;
+  }
+
   public void setViewingCoordSys(CoordSys aSys) {
     super.setViewingCoordSys(aSys);
     initialCoordSys = (CoordSys) aSys.clone();

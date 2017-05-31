@@ -1,18 +1,14 @@
 package main;
 
-import java.awt.*;
-import java.util.*;
-
-import javax.swing.JPanel;
-
 import Foundation.Utils;
 import VMath.VMath;
 import orbits.Abstract3DModelObject;
 import orbits.CoordSys;
-import orbits.Drawable3D;
-import orbits.Planet;
-import orbits.Sphere;
 import orbits.World3DContainer;
+
+import javax.swing.*;
+import java.awt.*;
+import java.util.Collection;
 
 public abstract class AbstractView<T extends Abstract3DModelObject> extends JPanel implements Updateable {
 
@@ -26,6 +22,8 @@ public abstract class AbstractView<T extends Abstract3DModelObject> extends JPan
   public abstract RenderingCanvas getViewCanvas();
 
   public abstract CoordSys getCoordSys();
+
+  public abstract int getDetailLevel();
 
   /*--------------------------------------------------------------------------*/
   public AbstractView() {

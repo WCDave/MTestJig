@@ -687,6 +687,11 @@ public class CockPitView extends AbstractView implements Instrumented<AbstractIn
     return theRocket.getCoordSys();
   }
 
+  @Override
+  public int getDetailLevel() {
+    return 11;
+  }
+
 
   /**
    * This method should return an instance of this class which does

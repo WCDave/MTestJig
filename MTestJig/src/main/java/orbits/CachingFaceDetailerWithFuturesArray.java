@@ -1,15 +1,22 @@
 package orbits;
 
 
-import Foundation.Utils;
 import VMath.VMath;
 import com.google.common.collect.MapMaker;
 import main.AbstractView;
 import org.apache.commons.math3.util.FastMath;
 import org.apache.log4j.Logger;
 
-import java.util.*;
-import java.util.concurrent.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.FutureTask;
+import java.util.concurrent.TimeUnit;
 
 public class CachingFaceDetailerWithFuturesArray implements ICachingDetailer<Facet> {
 
@@ -23,7 +30,7 @@ public class CachingFaceDetailerWithFuturesArray implements ICachingDetailer<Fac
 
   public CachingFaceDetailerWithFuturesArray(int maxLevel) {
     this.maxLevel = maxLevel;
-    LIST_SIZE = 2 << (maxLevel - 1);
+    LIST_SIZE = 2 << (12 - 1);
   }
 
   @Override
@@ -31,7 +38,7 @@ public class CachingFaceDetailerWithFuturesArray implements ICachingDetailer<Fac
     f.setVectorFromView(VMath.vecAdd(view.getObjectVectorFromView(), f.mv()));
     if (f.hasDetailFacets()) {
 
-      final int level = FastMath.max(3, FastMath.min((int) (FastMath.exp(-FastMath.pow(VMath.mag(f.vectorFromView), .95) / (f.getComposedObject().getDetailingFactor())) * 20), maxLevel));
+      final int level = FastMath.max(3, FastMath.min((int) (FastMath.exp(-FastMath.pow(VMath.mag(f.vectorFromView), .95) / (f.getComposedObject().getDetailingFactor())) * 20), view.getDetailLevel()));
 
       if (f.getLastDetailLevel() != level) {
         List<Facet>[] levelMap = facetLevelMap.get(f);
