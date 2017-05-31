@@ -62,6 +62,11 @@ public class FacetSerializeTest {
         return s;
       }
 
+      @Override
+      public int getDetailLevel() {
+        return 0;
+      }
+
     };
     Facet f1 = fList.get(0);
     f1.set3DObjectForDraw(aView);
