@@ -689,7 +689,7 @@ public class CockPitView extends AbstractView implements Instrumented<AbstractIn
 
   @Override
   public int getDetailLevel() {
-    return 11;
+    return theRocket.getNorm()[0] == 0 ?11:14;
   }
 
 
