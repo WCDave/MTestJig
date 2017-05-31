@@ -95,7 +95,7 @@ public class CockPitView extends AbstractView implements Instrumented<AbstractIn
 
   private CountDownLatch countDownLatch;
 
-  private static Dimension COCKPIT_VIEW_SIZE_DIM = new Dimension(MainApp.APP_SIZE_DIM.width-25, MainApp.APP_SIZE_DIM.height-350);
+  private static Dimension COCKPIT_VIEW_SIZE_DIM = new Dimension(MainApp.APP_SIZE_DIM.width-25, MainApp.APP_SIZE_DIM.height-320);
 
 
   private static final float rateInc = 5f;
@@ -143,7 +143,7 @@ public class CockPitView extends AbstractView implements Instrumented<AbstractIn
         thrustPanel = new JPanel();
         thrustPanel.setLayout(null);
         add(thrustPanel);
-        thrustPanel.setBounds(7, 400, 175, 300);
+        thrustPanel.setBounds(7, 430, 175, 270);
         thrustPanel.setBackground(new Color(255, 0, 0));
         thrustPanel.setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
         {
@@ -177,7 +177,7 @@ public class CockPitView extends AbstractView implements Instrumented<AbstractIn
       {
         navPanel = new JPanel();
         add(navPanel);
-        navPanel.setBounds(189, 400, 795, 300);
+        navPanel.setBounds(189, 430, 795, 270);
         navPanel.setBackground(new Color(64, 128, 128));
         navPanel.setLayout(null);
         navPanel.setBorder(BorderFactory.createEtchedBorder(BevelBorder.LOWERED));
@@ -628,8 +628,8 @@ public class CockPitView extends AbstractView implements Instrumented<AbstractIn
 
       }
       //this.setBounds(25, 25, 865, 572);
-      this.setSize(MainApp.APP_SIZE_DIM.width, MainApp.APP_SIZE_DIM.height);
-      this.setPreferredSize(MainApp.APP_SIZE_DIM);
+      this.setSize(MainApp.APP_SIZE_DIM.width-15, MainApp.APP_SIZE_DIM.height-50);
+      this.setPreferredSize(new Dimension(MainApp.APP_SIZE_DIM.width-15, MainApp.APP_SIZE_DIM.height-50));
       this.setFocusable(false);
       this.setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
     } catch (Exception e) {

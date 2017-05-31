@@ -399,7 +399,7 @@ public class MainApp extends JFrame {
     //struct.setPosition(structureLocation);
     struct.getBuilder().build();
 
-    LaunchPointCraft lpCraft = new LaunchPointCraft(SphereHelper.movePoint(structureLocation, 200, 800, (Sphere) World3DContainer.getInstance().getItem("Earth")), eView, anArray[2]);
+    LaunchPointCraft lpCraft = new LaunchPointCraft(SphereHelper.movePoint(structureLocation, 200, 2800, (Sphere) World3DContainer.getInstance().getItem("Earth")), eView, anArray[2]);
     lpCraft.setName("LP");
    // Movement groundStructureMovement = new GroundStructureMovement(new AbstractGroundStructure[]{struct}, (Planet)anArray[2]);
     //groundStructureMovement.execute(500);
