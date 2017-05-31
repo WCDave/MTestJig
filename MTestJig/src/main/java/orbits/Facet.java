@@ -258,7 +258,7 @@ public class Facet extends Abstract3DModelObject implements Visitable {
     if (dotFromView < view.getDistanceDrawingFactorForView()) { //0
       //double faceDotFromView = VMath.dotprod(view.getCoordSys().getViewAxis(), VMath.normalize(VMath.vecAdd(view.getObjectVectorFromView(), mv))) ;
       //if(faceDotFromView < 0.5) return;
-      //color = determineFaceColor(this);
+      ///color = determineFaceColor(this);
       //vectorFromView = VMath.vecAdd(view.getObjectVectorFromView(), mv);
       if (topLevel) {
         if(((Composed3DObject<Facet>)composedObject).getDetailer() != null) {

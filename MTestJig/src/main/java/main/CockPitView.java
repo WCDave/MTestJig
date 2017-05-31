@@ -95,7 +95,7 @@ public class CockPitView extends AbstractView implements Instrumented<AbstractIn
 
   private CountDownLatch countDownLatch;
 
-  private static Dimension COCKPIT_VIEW_SIZE_DIM = new Dimension(MainApp.APP_SIZE_DIM.width-19, MainApp.APP_SIZE_DIM.height-350);
+  private static Dimension COCKPIT_VIEW_SIZE_DIM = new Dimension(MainApp.APP_SIZE_DIM.width-25, MainApp.APP_SIZE_DIM.height-350);
 
 
   private static final float rateInc = 5f;
@@ -177,7 +177,7 @@ public class CockPitView extends AbstractView implements Instrumented<AbstractIn
       {
         navPanel = new JPanel();
         add(navPanel);
-        navPanel.setBounds(189, 400, 800, 300);
+        navPanel.setBounds(189, 400, 795, 300);
         navPanel.setBackground(new Color(64, 128, 128));
         navPanel.setLayout(null);
         navPanel.setBorder(BorderFactory.createEtchedBorder(BevelBorder.LOWERED));
@@ -256,8 +256,8 @@ public class CockPitView extends AbstractView implements Instrumented<AbstractIn
           computer = new NavComputer(this, countDownLatch);
           navPanel.add(computer);
           computer.setLayout(null);
-          computer.setBounds(280, 2, 600, 170);
-          computer.setSize(750, 170);
+          computer.setBounds(280, 2, 515, 170);
+          computer.setSize(515, 170);
           computer.setVisible(true);
         }
         {

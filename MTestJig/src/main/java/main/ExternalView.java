@@ -41,7 +41,7 @@ public class ExternalView extends AbstractView implements KeyListener {
   private boolean viewLock = true;
   private int planetSelector = 0;
 
-  private Dimension EXT_VIEW_SIZE_DIM = new Dimension(MainApp.APP_SIZE_DIM.width-30, MainApp.APP_SIZE_DIM.height-50);
+  private Dimension EXT_VIEW_SIZE_DIM = new Dimension(MainApp.APP_SIZE_DIM.width-30, MainApp.APP_SIZE_DIM.height-70);
 
   private CoordSys initialCoordSys;
 
