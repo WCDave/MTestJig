@@ -37,14 +37,14 @@ public class GravityTurn extends AFCSTargetingStrategy {
     computer.setAnnunMsg("Gravity Turn");
     Craft c = computer.getCraft();
     //CoordSys navObject = rocket.getCoordSys();
-    //Thread t = new MileStoneThread();
+    Thread t = new MileStoneThread();
 
     //long t0 = System.currentTimeMillis();
     c.adjustPitchRate(5.39f);
     Utils.sleep(4000);
     c.nullRates();
-    //((GravityTurnThrustOnlyCorridorControl)corridorControl).setBaselineThrustValue(computer.getControlAdapter().getThrottleSetting());
-    //t.start();
+    ((GravityTurnThrustOnlyCorridorControl)corridorControl).setBaselineThrustValue(computer.getControlAdapter().getThrottleSetting());
+    t.start();
 //    double pitchValue = VMath.dotprod(cs.zAxis().getVectorForm(), VMath.normalize(VMath.vecSubtract(cs.getPositionVec(), referencedObject.getCoordSys().getPositionVec())));
 //    System.out.println(pitchValue);
     //computer.getControlAdapter().rampThrust(60, ControlInputSource.COMPUTER);

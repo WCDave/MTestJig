@@ -9,6 +9,7 @@ import orbits.World3DContainer;
 import org.jmock.Expectations;
 import org.jmock.Mockery;
 import org.jmock.lib.legacy.ClassImposteriser;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
@@ -41,6 +42,7 @@ public class ExternalViewPositionerTest {
   ExternalViewPositioner iut = new ExternalViewPositioner(0, testSys);
 
   @Test
+  @Ignore
   public void testPostionViewingSys() {
    Constructor c = World3DContainer.class.getDeclaredConstructors()[0];
     c.setAccessible(true);

@@ -5,6 +5,7 @@ import main.RenderingCanvas;
 import orbits.CoordSys;
 import orbits.Facet;
 import orbits.Planet;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import javax.imageio.ImageIO;
@@ -25,6 +26,7 @@ public class FacetSerializeTest {
   FileOutputStream bos;
 
   @Test
+  @Ignore
   public void test() throws Exception {
 
     BufferedImage earthImage = null;

@@ -4,6 +4,7 @@ import enums.ControlInputSource;
 import main.Rocket;
 import orbits.CoordSys;
 import org.easymock.EasyMock;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.powermock.modules.junit4.PowerMockRunner;
@@ -93,6 +94,7 @@ public class RocketControlAdapterTest {
   }
 
   @Test
+  @Ignore
   public void testGetThrottleSetting() {
     Rocket rocket = createMock(Rocket.class);
     CoordSys cs = createMock(CoordSys.class);

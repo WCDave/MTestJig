@@ -8,9 +8,6 @@ import org.jmock.Mockery;
 import org.jmock.lib.legacy.ClassImposteriser;
 import org.junit.Test;
 
-import java.awt.*;
-import java.util.Collections;
-
 public class RegularIcosahedronSphereBuilderTest {
 
   Mockery context = new Mockery() {{
@@ -24,14 +21,19 @@ public class RegularIcosahedronSphereBuilderTest {
   @Test
   public void testBuild() {
     context.checking(new Expectations() {{
+
       allowing(s).getRadius();
       will(returnValue(10f));
-      allowing(s).getFaceList();
-      will(returnValue(Collections.EMPTY_LIST));
       allowing(s).getCoordSys();
       will(returnValue(new CoordSys()));
-      allowing(s).getColor();
-      will(returnValue(Color.RED));
+      allowing(s).getBuildFactor();will(returnValue(-1));
+      allowing(s);
+//      allowing(s).getFaceList();
+//      will(returnValue(new ArrayList<Facet>()));
+//      allowing(s).getCoordSys();
+//      will(returnValue(new CoordSys()));
+//      allowing(s).getColor();
+//      will(returnValue(Color.RED));
     }});
 
     iut = new RegularIcosahedronSphereBuilder(s);

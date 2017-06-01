@@ -1,11 +1,9 @@
 package orbits;
 
 import VMath.VMath;
-import com.google.common.collect.MapMaker;
 import main.AbstractView;
 import main.ColorModel;
 import main.Shadeable;
-import mapUtils.MapHelper;
 import orbits.Object3D.IRebuildable;
 import org.apache.commons.math3.util.FastMath;
 import org.apache.log4j.Logger;
@@ -17,7 +15,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 /**
  * @author WCDave
@@ -107,15 +104,15 @@ public abstract class Sphere extends Abstract3DModelObject implements Shadeable,
     vectorFromView = aView.getObjectVectorFromView();
 //        double zDotProdCheck = VMath.dotprod(aView.getCoordSys().getVectorForViewDirection(), VMath.normalize(vectorFromView) ) + Math.asin(sRadius/VMath.mag(vectorFromView));
 //        if(zDotProdCheck < .2) return;
-    aView.setDistanceDrawingFactorForView(sRadius / VMath.mag(vectorFromView) * -.99945);
+    aView.setDistanceDrawingFactorForView(sRadius / VMath.mag(vectorFromView) * -.9988);
 
-    boolean outlineFlag = VMath.mag(vectorFromView) < OUTLINELIMIT && drawFaceOutlines;
+    //boolean outlineFlag = VMath.mag(vectorFromView) < OUTLINELIMIT && drawFaceOutlines;
     synchronized (faceList) {
       for (Facet f : faceList) {
 //  for (int i = 0;i<faceList.size();i++) {
 //   Facet f=faceList.get(i);
         f.set3DObjectForDraw(aView);
-        f.setDrawFaceOutlines(outlineFlag);
+        //f.setDrawFaceOutlines(outlineFlag);
       }
     }
     //Collections.sort(faceList);
