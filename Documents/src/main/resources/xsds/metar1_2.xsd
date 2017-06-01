@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="met" xmlns:mt="met" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="response">
+		<xs:complexType >
+			<xs:sequence >
+				<xs:element ref="mt:request_index"/>
+				<xs:element ref="mt:data_source" />
+				<xs:element ref="mt:request"/>
+				<xs:element ref="mt:errors"/>
+				<xs:element ref="mt:warnings"/>
+				<xs:element ref="mt:time_taken_ms"/>
+				<xs:element ref="mt:data"/>
+			</xs:sequence>
+			<xs:attribute name="version" type="xs:string" default="1.2"/>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="request_index" type="xs:int"/>
+	<xs:element name="data_source"	>
+		<xs:complexType>
+			<xs:attribute name="name" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="request" >
+		<xs:complexType>
+			<xs:attribute name="type" type="xs:string" />
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="errors">
+		<xs:complexType>
+			<xs:sequence minOccurs="0" >
+				<xs:element ref="mt:error" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="warnings">
+		<xs:complexType>
+			<xs:sequence minOccurs="0">
+				<xs:element ref="mt:warning" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="data" >
+		<xs:complexType>
+			<xs:sequence minOccurs="0" maxOccurs="unbounded">
+				<xs:element ref="mt:METAR"/>
+			</xs:sequence>
+			<xs:attribute name="num_results" type="xs:int"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="warning" type="xs:string"/>
+	<xs:element name="error" type="xs:string"/>
+	<xs:element name="time_taken_ms" type="xs:int"/>
+	<xs:attribute name="num_results" type="xs:int"/>
+
+	<xs:element name="METAR" >
+		<xs:complexType>
+			<xs:sequence >
+				<xs:element ref="mt:raw_text" minOccurs="0" />
+				<xs:element ref="mt:station_id" minOccurs="0"/>
+				<xs:element ref="mt:longitude" minOccurs="0"/>
+				<xs:element ref="mt:latitude" minOccurs="0"/>
+				<xs:element ref="mt:temp_c" minOccurs="0"/>
+				<xs:element ref="mt:dewpoint_c" minOccurs="0"/>
+				<xs:element ref="mt:wind_dir_degrees" minOccurs="0"/>
+				<xs:element ref="mt:wind_speed_kt" minOccurs="0"/>
+				<xs:element ref="mt:wind_gust_kt" minOccurs="0"/>
+				<xs:element ref="mt:visibility_statute_mi" minOccurs="0"/>
+				<xs:element ref="mt:altim_in_hg" minOccurs="0"/>
+				<xs:element ref="mt:sea_level_pressure_mb" minOccurs="0"/>
+				<xs:element ref="mt:quality_control_flags" minOccurs="0"/>
+				<xs:element ref="mt:wx_string" minOccurs="0"/>
+				<xs:element ref="mt:sky_condition" minOccurs="0" maxOccurs="4"/>
+				<xs:element ref="mt:flight_category" minOccurs="0"/>
+				<xs:element ref="mt:three_hr_pressure_tendency_mb" minOccurs="0"/>
+				<xs:element ref="mt:maxT_c" minOccurs="0" />
+				<xs:element ref="mt:minT_c" minOccurs="0" />
+				<xs:element ref="mt:maxT24hr_c" minOccurs="0" />
+				<xs:element ref="mt:minT24hr_c" minOccurs="0"/>
+				<xs:element ref="mt:precip_in" minOccurs="0" />
+				<xs:element ref="mt:pcp3hr_in" minOccurs="0"/>
+				<xs:element ref="mt:pcp6hr_in" minOccurs="0"/>
+				<xs:element ref="mt:pcp24hr_in" minOccurs="0"/>
+				<xs:element ref="mt:snow_in" minOccurs="0"/>
+				<xs:element ref="mt:vert_vis_ft" minOccurs="0"/>
+				<xs:element ref="mt:metar_type" minOccurs="0" />
+				<xs:element ref="mt:elevation_m" minOccurs="0" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="raw_text" type="xs:string"/>
+	<xs:element name="station_id" type="xs:string"/>
+	<xs:element name="observation_time" type="xs:string"/>
+	<xs:element name="latitude" type="xs:float"/>
+	<xs:element name="longitude" type="xs:float"/>
+	<xs:element name="temp_c" type="xs:float" />
+	<xs:element name="dewpoint_c" type="xs:float"/>
+	<xs:element name="wind_dir_degrees" type="xs:int"/>
+	<xs:element name="wind_speed_kt" type="xs:int"/>
+	<xs:element name="wind_gust_kt" type="xs:int"/>
+	<xs:element name="visibility_statute_mi" type="xs:float"/>
+	<xs:element name="altim_in_hg" type="xs:float"/>
+	<xs:element name="sea_level_pressure_mb" type="xs:float"/>
+	<xs:element name="quality_control_flags" >
+		<xs:complexType>
+			<xs:sequence >
+				<xs:element ref="mt:corrected" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="mt:auto" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="mt:auto_station" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="mt:maintenance_indicator_on" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="mt:no_signal" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="mt:lightning_sensor_off" minOccurs="0" maxOccurs="1" />
+				<xs:element ref="mt:freezing_rain_sensor_off" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="mt:present_weather_sensor_off" minOccurs="0" maxOccurs="1"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="corrected" type="xs:string" />
+	<xs:element name="auto" type="xs:string"/>
+	<xs:element name="auto_station" type="xs:string"/>
+	<xs:element name="maintenance_indicator_on" type="xs:string"	/>
+	<xs:element name="no_signal" type="xs:string"/>
+	<xs:element name="lightning_sensor_off" type="xs:string"/>
+	<xs:element name="freezing_rain_sensor_off" type="xs:string"/>
+	<xs:element name="present_weather_sensor_off" type="xs:string"/>	
+	
+	<xs:element name="wx_string" type="xs:string"/>
+	
+	<xs:element name="sky_condition" >
+		<xs:complexType >
+			<xs:attribute name="sky_cover" type="xs:string"/>
+			<xs:attribute name="cloud_base_ft_agl" type="xs:int"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="flight_category" type="xs:string"/>
+	<xs:element name="three_hr_pressure_tendency_mb" type="xs:float"/>
+	<xs:element name="maxT_c" type="xs:float"/>
+	<xs:element name="minT_c" type="xs:float"/>
+	<xs:element name="maxT24hr_c" type="xs:float"/>
+	<xs:element name="minT24hr_c" type="xs:float"/>
+	<xs:element name="precip_in" type="xs:float"/>
+	<xs:element name="pcp3hr_in" type="xs:float"/>
+	<xs:element name="pcp6hr_in" type="xs:float"/>
+	<xs:element name="pcp24hr_in" type="xs:float"/>
+	<xs:element name="snow_in" type="xs:float"/>
+	<xs:element name="vert_vis_ft" type="xs:int"/>
+	<xs:element name="metar_type" type="xs:string"/>
+	<xs:element name="elevation_m" type="xs:float"/>
+</xs:schema>

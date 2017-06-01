@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="dave" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:clc="dave">
+	<xs:element name="CalculatorRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element type="xs:float" name="firstOperand" />
+				<xs:element type="xs:float" name="secondOperand" />
+				<xs:element type="clc:operation" name="operation"
+					maxOccurs="1" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="CalculatorResponse" type="xs:double" />
+	<xs:simpleType name="operation">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="add" />
+			<xs:enumeration value="subtract" />
+			<xs:enumeration value="multiply" />
+			<xs:enumeration value="divide" />
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

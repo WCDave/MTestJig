@@ -11,13 +11,11 @@ target/
 bin/
 *.zip
 AngularPlay/*
-Documents/*
 FT2/*
 Gas/*
-GFX/*
+Documents/src/main/java/*
 Gravity/*
 parent/*
-SolarSystem/*
 SpringWSProject/*
 Voronoi/*
 WF10/*

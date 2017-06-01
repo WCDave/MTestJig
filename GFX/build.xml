@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE project> 
+<project name="GfxFramework" default="dist" >
+
+<property name="lib" value="${basedir}/lib/"/>	
+<property name="log4j.filename" value="log4j-1.2.15.jar" />
+
+    <target name="compile">
+    	<echo message="compile"/>
+    	<delete>
+    	    <fileset dir="${basedir}/bin" includes="**/*.class"/>
+    	</delete>
+	    <javac srcdir="${basedir}" destdir="${basedir}/bin" executable="${JAVAC_HOME}/javac"
+	    	debug="true" debuglevel="lines, vars, source">
+	    	<classpath>
+	    		<pathelement path="${basedir}/bin"/>
+	    		<pathelement location="${JUNIT_HOME}/junit.jar"/>	
+	    		<pathelement location="${LOG4J_HOME}/${log4j.filename}"/>
+	    	</classpath>
+	    </javac>
+	</target>
+	<target name="dist" depends="compile">
+		<echo message="creating jar"/>
+		<delete dir="${lib}"/>
+		<mkdir dir="${lib}"/>
+	<jar jarfile="${lib}GfxFramework.jar" >
+		<fileset dir="${basedir}/bin" />
+    </jar>
+	</target>
+
+</project>

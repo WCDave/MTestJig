@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="dave" xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified"
+           elementFormDefault="qualified">
+
+    <xs:element name="RocketDataRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="refName" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+
+    </xs:element>
+
+    <xs:complexType name="OrbitElementsType">
+        <xs:sequence>
+            <xs:element name="refName" type="xs:string"/>
+            <xs:element name="rPer" type="xs:double" />
+            <xs:element name="vPer" type="xs:double"/>
+            <xs:element name="rAph" type="xs:double"/>
+            <xs:element name="vAph" type="xs:double"/>
+            <xs:element name="ecc" type="xs:double"/>
+            <xs:element name="a" type="xs:double" />
+            <xs:element name="refX" type="xs:double"/>
+            <xs:element name="refY" type="xs:double"/>
+            <xs:element name="refZ" type="xs:double"/>
+            <xs:element name="rocketX" type="xs:double"/>
+            <xs:element name="rocketY" type="xs:double"/>
+            <xs:element name="rocketZ" type="xs:double"/>
+            <!-- rPer,vPer,rAph,vAph,ecc,radiusVec,a, refX, refY, refZ, refName, rocketX, rocketY, rocketZ, locMap -->
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="RocketDataResponse">
+        <xs:complexType >
+            <xs:sequence>
+                <xs:element name="refName" type="xs:string"/>
+                <xs:element name="rPer" type="xs:double"/>
+                <xs:element name="vPer" type="xs:double"/>
+                <xs:element name="rAph" type="xs:double"/>
+                <xs:element name="vAph" type="xs:double"/>
+                <xs:element name="ecc" type="xs:double"/>
+                <xs:element name="a" type="xs:double"/>
+                <xs:element name="refX" type="xs:double"/>
+                <xs:element name="refY" type="xs:double"/>
+                <xs:element name="refZ" type="xs:double"/>
+                <xs:element name="rocketX" type="xs:double"/>
+                <xs:element name="rocketY" type="xs:double"/>
+                <xs:element name="rocketZ" type="xs:double"/>
+                <xs:element name="moonX" type="xs:double"/>
+                <xs:element name="moonY" type="xs:double"/>
+                <xs:element name="moonZ" type="xs:double"/>
+                <!-- rPer,vPer,rAph,vAph,ecc,radiusVec,a, refX, refY, refZ, refName, rocketX, rocketY, rocketZ, locMap -->
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

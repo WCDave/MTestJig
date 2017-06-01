@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xs:schema xmlns:st="stars" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="stars"
+           xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+           jaxb:version="2.0">
+
+    <xs:complexType name="starType">
+        <xs:sequence>
+            <xs:element name="x" type="xs:float"/>
+            <xs:element name="brightness" type="xs:float"/>
+            <xs:element name="z" type="xs:float"/>
+            <xs:element name="y" type="xs:float"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="star-list">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" minOccurs="0" name="star" type="st:starType"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

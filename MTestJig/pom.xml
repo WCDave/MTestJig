@@ -2,7 +2,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>MTestJig</groupId>
+    <groupId>org.daveb.MTestJig</groupId>
     <artifactId>MTestJig</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
@@ -108,7 +108,7 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>SolarSystem</groupId>
+            <groupId>org.daveb.SolarSystem</groupId>
             <artifactId>SolarSystem</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
@@ -163,7 +163,7 @@
             <!--<version>1.2.1</version>-->
         <!--</dependency>-->
         <dependency>
-            <groupId>GFX</groupId>
+            <groupId>org.daveb.GFX</groupId>
             <artifactId>GFX</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
@@ -214,7 +214,7 @@
             <type>jar</type>
         </dependency>
         <dependency>
-            <groupId>Documents</groupId>
+            <groupId>org.daveb.Documents</groupId>
             <artifactId>Documents</artifactId>
             <version>0.0.1-SNAPSHOT</version>
             <type>jar</type>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="http://solsys" xmlns:ss="http://solsys" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<xs:element name="Planets" type="ss:PlanetsType"/>
+	<xs:complexType name="PlanetColorType">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="red" type="xs:short" use="optional"/>
+				<xs:attribute name="green" type="xs:short" use="optional"/>
+				<xs:attribute name="blue" type="xs:short" use="optional"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="PlanetType">
+		<xs:sequence>
+			<xs:element name="PlanetName" type="xs:string"  />				
+			<xs:element name="PlanetColor" type="ss:PlanetColorType"/>
+			<xs:element name="TrueAnamoly" type="xs:float"/>
+			<xs:element name="PerihelionAngle"  type="xs:float" />
+			<xs:element name="Obliquity"  type="xs:float" />
+			<xs:element name="RotationalPeriod"  type="xs:float"/>
+			<xs:element name="MeanAnamoly0" type="xs:float"/>
+			<xs:element name="MeanAnamoly" type="xs:float"/>
+			<xs:element name="Dm"  type="xs:float"/>
+			<xs:element name="Radius"  type="xs:float"/>
+			<xs:element name="Oblateness"  type="xs:float" />
+			<xs:element name="ArgOfPerhelion"  type="xs:float"/>
+			<xs:element name="Atmo">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="false"/>
+						<xs:enumeration value="true"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="SemiMajorAxis"  type="xs:float"/>
+			<xs:element name="Period"  type="xs:float"/>
+			<xs:element name="Eccentricity"  type="xs:float"/>
+			<xs:element name="Inclination"  type="xs:float"/>
+			<xs:element name="AscendingNode"  type="xs:float"/>
+			<xs:element name="EpochLongitude"  type="xs:float"/>
+			<xs:element name="Mass"  type="xs:float"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="PlanetsType">
+		<xs:sequence>
+			<xs:element name="Planet" type="ss:PlanetType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

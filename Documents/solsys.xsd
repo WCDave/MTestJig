@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="http://solsys" xmlns:ss="http://solsys" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<xs:element name="Planets" type="ss:PlanetsType"/>
+	<xs:complexType name="PlanetColorType">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="red" type="xs:short" use="optional"/>
+				<xs:attribute name="green" type="xs:short" use="optional"/>
+				<xs:attribute name="blue" type="xs:short" use="optional"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="PlanetType">
+		<xs:sequence>
+			<xs:element name="PlanetName" type="xs:string"  />				
+			<xs:element name="PlanetColor" type="ss:PlanetColorType"/>
+			<xs:element name="TrueAnamoly" type="xs:float"/>
+			<xs:element name="PerihelionAngle"  type="xs:float" />
+			<xs:element name="Obliquity"  type="xs:float" />
+			<xs:element name="RotationalPeriod"  type="xs:float"/>
+			<xs:element name="MeanAnamoly0">
+				<xs:simpleType>
+					<xs:restriction base="xs:float">
+						<xs:enumeration value="0.0"/>
+						<xs:enumeration value="168.6562"/>
+						<xs:enumeration value="48.0052"/>
+						<xs:enumeration value="356.047"/>
+						<xs:enumeration value="18.6021"/>
+						<xs:enumeration value="19.895"/>
+						<xs:enumeration value="316.967"/>
+						<xs:enumeration value="142.5905"/>
+						<xs:enumeration value="260.2471"/>
+						<xs:enumeration value="14.704"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="MeanAnamoly" type="xs:float"/>
+			<xs:element name="Dm">
+				<xs:simpleType>
+					<xs:restriction base="xs:float">
+						<xs:enumeration value="0.0"/>
+						<xs:enumeration value="4.0923343"/>
+						<xs:enumeration value="1.6021302"/>
+						<xs:enumeration value="0.98560023"/>
+						<xs:enumeration value="0.5240208"/>
+						<xs:enumeration value="0.08380853"/>
+						<xs:enumeration value="0.03344423"/>
+						<xs:enumeration value="0.011725806"/>
+						<xs:enumeration value="0.005995147"/>
+						<xs:enumeration value="0.003975571"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="Radius">
+				<xs:simpleType>
+					<xs:restriction base="xs:float">
+						<xs:enumeration value="6.96E8"/>
+						<xs:enumeration value="2430000.0"/>
+						<xs:enumeration value="6060000.0"/>
+						<xs:enumeration value="6370000.0"/>
+						<xs:enumeration value="3370000.0"/>
+						<xs:enumeration value="6.99E7"/>
+						<xs:enumeration value="5.85E7"/>
+						<xs:enumeration value="2.33E7"/>
+						<xs:enumeration value="2.21E7"/>
+						<xs:enumeration value="1500000.0"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="Oblateness"  type="xs:float" />
+			<xs:element name="ArgOfPerhelion"  type="xs:float"/>
+			<xs:element name="Atmo">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="false"/>
+						<xs:enumeration value="true"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="SemiMajorAxis">
+				<xs:simpleType>
+					<xs:restriction base="xs:float">
+						<xs:enumeration value="0.0"/>
+						<xs:enumeration value="5.7909035E10"/>
+						<xs:enumeration value="1.08208628E11"/>
+						<xs:enumeration value="1.4959788E11"/>
+						<xs:enumeration value="2.27940467E11"/>
+						<xs:enumeration value="7.7829184E11"/>
+						<xs:enumeration value="1.42937031E12"/>
+						<xs:enumeration value="2.86954278E12"/>
+						<xs:enumeration value="4.4966515E12"/>
+						<xs:enumeration value="5.9063764E12"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="Period">
+				<xs:simpleType>
+					<xs:restriction base="xs:float">
+						<xs:enumeration value="0.0"/>
+						<xs:enumeration value="1.39354015E16"/>
+						<xs:enumeration value="3.55953146E16"/>
+						<xs:enumeration value="5.7861297E16"/>
+						<xs:enumeration value="1.08825873E17"/>
+						<xs:enumeration value="6.8661567E17"/>
+						<xs:enumeration value="1.70890193E18"/>
+						<xs:enumeration value="4.8609266E18"/>
+						<xs:enumeration value="9.535288E18"/>
+						<xs:enumeration value="1.4354289E19"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="Eccentricity">
+				<xs:simpleType>
+					<xs:restriction base="xs:float">
+						<xs:enumeration value="0.0"/>
+						<xs:enumeration value="0.205635"/>
+						<xs:enumeration value="0.006773"/>
+						<xs:enumeration value="0.016709"/>
+						<xs:enumeration value="0.093405"/>
+						<xs:enumeration value="0.048498"/>
+						<xs:enumeration value="0.055546"/>
+						<xs:enumeration value="0.047318"/>
+						<xs:enumeration value="0.008606"/>
+						<xs:enumeration value="0.248808"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="Inclination">
+				<xs:simpleType>
+					<xs:restriction base="xs:float">
+						<xs:enumeration value="0.0"/>
+						<xs:enumeration value="7.0047"/>
+						<xs:enumeration value="3.3946"/>
+						<xs:enumeration value="1.8497"/>
+						<xs:enumeration value="1.303"/>
+						<xs:enumeration value="2.4886"/>
+						<xs:enumeration value="0.7733"/>
+						<xs:enumeration value="1.77"/>
+						<xs:enumeration value="17.14175"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="AscendingNode">
+				<xs:simpleType>
+					<xs:restriction base="xs:float">
+						<xs:enumeration value="0.0"/>
+						<xs:enumeration value="48.3313"/>
+						<xs:enumeration value="76.6799"/>
+						<xs:enumeration value="49.5574"/>
+						<xs:enumeration value="100.4542"/>
+						<xs:enumeration value="113.6634"/>
+						<xs:enumeration value="74.0005"/>
+						<xs:enumeration value="131.7806"/>
+						<xs:enumeration value="110.3035"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="EpochLongitude">
+				<xs:simpleType>
+					<xs:restriction base="xs:float">
+						<xs:enumeration value="0.0"/>
+						<xs:enumeration value="252.3"/>
+						<xs:enumeration value="182.0"/>
+						<xs:enumeration value="100.5"/>
+						<xs:enumeration value="355.4"/>
+						<xs:enumeration value="34.4"/>
+						<xs:enumeration value="50.1"/>
+						<xs:enumeration value="314.1"/>
+						<xs:enumeration value="304.3"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="Mass">
+				<xs:simpleType>
+					<xs:restriction base="xs:float">
+						<xs:enumeration value="1.99E30"/>
+						<xs:enumeration value="3.18E23"/>
+						<xs:enumeration value="4.88E24"/>
+						<xs:enumeration value="5.98E24"/>
+						<xs:enumeration value="6.42E23"/>
+						<xs:enumeration value="1.9E27"/>
+						<xs:enumeration value="5.68E26"/>
+						<xs:enumeration value="8.68E25"/>
+						<xs:enumeration value="1.03E26"/>
+						<xs:enumeration value="1.4E22"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="PlanetsType">
+		<xs:sequence>
+			<xs:element name="Planet" type="ss:PlanetType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

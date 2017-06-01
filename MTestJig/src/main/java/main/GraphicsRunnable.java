@@ -15,7 +15,7 @@ public class GraphicsRunnable implements Runnable {
     while (true) {
       for (int i = 0; i < viewArray.length; i++) {
         if (viewArray[i].isVisible()) {
-//          Utils.sleep(0, 1000);
+          Utils.sleep(0, 1500);
           viewArray[i].update();
         }
       }

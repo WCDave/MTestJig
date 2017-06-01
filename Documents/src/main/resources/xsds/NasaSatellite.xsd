@@ -1,0 +1,649 @@
+<!--Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is Metro/2.1.1-b09 (branches/2.1-6834; 2011-07-16T17:14:48+0000) JAXWS-RI/2.2.5-promoted-b04 JAXWS/2.2.-->
+<xs:schema version="1.0" targetNamespace="http://ssc.spdf.gsfc.nasa.gov/" xmlns:tns="http://ssc.spdf.gsfc.nasa.gov/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:element name="SSCExternalException" type="tns:SSCExternalException"/>
+   <xs:element name="SSCResourceLimitExceededException" type="tns:SSCResourceLimitExceededException"/>
+   <xs:element name="getAcknowledgements" type="tns:getAcknowledgements"/>
+   <xs:element name="getAcknowledgementsResponse" type="tns:getAcknowledgementsResponse"/>
+   <xs:element name="getAllGroundStations" type="tns:getAllGroundStations"/>
+   <xs:element name="getAllGroundStationsResponse" type="tns:getAllGroundStationsResponse"/>
+   <xs:element name="getAllSatellites" type="tns:getAllSatellites"/>
+   <xs:element name="getAllSatellitesResponse" type="tns:getAllSatellitesResponse"/>
+   <xs:element name="getAllSpaseObservatories" type="tns:getAllSpaseObservatories"/>
+   <xs:element name="getAllSpaseObservatoriesResponse" type="tns:getAllSpaseObservatoriesResponse"/>
+   <xs:element name="getData" type="tns:getData"/>
+   <xs:element name="getDataFiles" type="tns:getDataFiles"/>
+   <xs:element name="getDataFilesResponse" type="tns:getDataFilesResponse"/>
+   <xs:element name="getDataResponse" type="tns:getDataResponse"/>
+   <xs:element name="getGraphs" type="tns:getGraphs"/>
+   <xs:element name="getGraphsResponse" type="tns:getGraphsResponse"/>
+   <xs:element name="getPrivacyAndImportantNotices" type="tns:getPrivacyAndImportantNotices"/>
+   <xs:element name="getPrivacyAndImportantNoticesResponse" type="tns:getPrivacyAndImportantNoticesResponse"/>
+   <xs:complexType name="getAllSpaseObservatories">
+      <xs:sequence/>
+   </xs:complexType>
+   <xs:complexType name="getAllSpaseObservatoriesResponse">
+      <xs:sequence>
+         <xs:element name="return" type="tns:spaseObservatoryDescription" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="spaseObservatoryDescription">
+      <xs:complexContent>
+         <xs:extension base="tns:satelliteDescription">
+            <xs:sequence>
+               <xs:element name="resourceId" type="xs:string" minOccurs="0"/>
+            </xs:sequence>
+         </xs:extension>
+      </xs:complexContent>
+   </xs:complexType>
+   <xs:complexType name="satelliteDescription">
+      <xs:sequence>
+         <xs:element name="endTime" type="xs:dateTime" minOccurs="0"/>
+         <xs:element name="geometry" type="xs:string" minOccurs="0"/>
+         <xs:element name="id" type="xs:string" minOccurs="0"/>
+         <xs:element name="name" type="xs:string" minOccurs="0"/>
+         <xs:element name="resolution" type="xs:int"/>
+         <xs:element name="startTime" type="xs:dateTime" minOccurs="0"/>
+         <xs:element name="trajectoryGeometry" type="xs:string" minOccurs="0"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="SSCExternalException">
+      <xs:sequence>
+         <xs:element name="message" type="xs:string" minOccurs="0"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="getGraphs">
+      <xs:sequence>
+         <xs:element name="arg0" type="tns:graphRequest" minOccurs="0"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="graphRequest">
+      <xs:complexContent>
+         <xs:extension base="tns:request">
+            <xs:sequence>
+               <xs:element name="mapProjectionOptions" type="tns:mapProjectionGraphOptions" minOccurs="0"/>
+               <xs:element name="orbitOptions" type="tns:orbitGraphOptions" minOccurs="0"/>
+               <xs:element name="timeSeriesOptions" type="tns:timeSeriesGraphOptions" minOccurs="0"/>
+            </xs:sequence>
+         </xs:extension>
+      </xs:complexContent>
+   </xs:complexType>
+   <xs:complexType name="request">
+      <xs:sequence>
+         <xs:element name="BFieldModelOptions" type="tns:bFieldModelOptions" minOccurs="0"/>
+         <xs:element name="beginTime" type="xs:dateTime" minOccurs="0"/>
+         <xs:element name="endTime" type="xs:dateTime" minOccurs="0"/>
+         <xs:element name="satellites" type="tns:satelliteSpecification" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="mapProjectionGraphOptions">
+      <xs:complexContent>
+         <xs:extension base="tns:graphOptions">
+            <xs:sequence>
+               <xs:element name="coordinateSystem" type="tns:projectionCoordinateSystem" minOccurs="0"/>
+               <xs:element name="formatOptions" type="tns:graphFormatOptions" minOccurs="0"/>
+               <xs:element name="groundStations" type="xs:string" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+               <xs:element name="longitudeVerticalDown" type="xs:float"/>
+               <xs:element name="mapLimits" type="tns:mapLimits" minOccurs="0"/>
+               <xs:element name="polarMapOrientation" type="tns:polarMapOrientation" minOccurs="0"/>
+               <xs:element name="projection" type="tns:mapProjection" minOccurs="0"/>
+               <xs:element name="showContinents" type="xs:boolean"/>
+               <xs:element name="title" type="xs:string" minOccurs="0"/>
+               <xs:element name="trace" type="tns:trace" minOccurs="0"/>
+            </xs:sequence>
+         </xs:extension>
+      </xs:complexContent>
+   </xs:complexType>
+   <xs:complexType name="graphOptions" abstract="true">
+      <xs:sequence/>
+   </xs:complexType>
+   <xs:complexType name="graphFormatOptions">
+      <xs:sequence>
+         <xs:element name="charSize" type="xs:float"/>
+         <xs:element name="customLabelOptions" type="tns:graphLabelOptions" minOccurs="0"/>
+         <xs:element name="symbolSize" type="xs:float"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="graphLabelOptions">
+      <xs:sequence>
+         <xs:element name="dayOfYearLabelFrequency" type="xs:int"/>
+         <xs:element name="hourLabelFrequency" type="xs:int"/>
+         <xs:element name="hourTickMarkFrequency" type="xs:int"/>
+         <xs:element name="minuteLabelFrequency" type="xs:int"/>
+         <xs:element name="minuteTickMarkFrequency" type="xs:int"/>
+         <xs:element name="monthDayOfMonthLabel" type="xs:boolean"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="mapLimits">
+      <xs:sequence>
+         <xs:element name="maxLatitude" type="xs:float"/>
+         <xs:element name="maxLongitude" type="xs:float"/>
+         <xs:element name="minLatitude" type="xs:float"/>
+         <xs:element name="minLongitude" type="xs:float"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="orbitGraphOptions">
+      <xs:complexContent>
+         <xs:extension base="tns:graphOptions">
+            <xs:sequence>
+               <xs:element name="combined" type="xs:boolean"/>
+               <xs:element name="coordinateSystem" type="tns:coordinateSystem" minOccurs="0"/>
+               <xs:element name="evenAxesScales" type="xs:boolean"/>
+               <xs:element name="formatOptions" type="tns:graphFormatOptions" minOccurs="0"/>
+               <xs:element name="imfBz" type="xs:float"/>
+               <xs:element name="manualScale" type="tns:graphScale" minOccurs="0"/>
+               <xs:element name="showBowShockMagnetopause" type="xs:boolean"/>
+               <xs:element name="solarWindPressure" type="xs:float"/>
+               <xs:element name="sunToRight" type="xs:boolean"/>
+               <xs:element name="xrView" type="xs:boolean"/>
+               <xs:element name="xyView" type="xs:boolean"/>
+               <xs:element name="xzView" type="xs:boolean"/>
+               <xs:element name="yzView" type="xs:boolean"/>
+            </xs:sequence>
+         </xs:extension>
+      </xs:complexContent>
+   </xs:complexType>
+   <xs:complexType name="graphScale">
+      <xs:sequence>
+         <xs:element name="maxR" type="xs:int"/>
+         <xs:element name="maxX" type="xs:int"/>
+         <xs:element name="maxY" type="xs:int"/>
+         <xs:element name="maxZ" type="xs:int"/>
+         <xs:element name="minR" type="xs:int"/>
+         <xs:element name="minX" type="xs:int"/>
+         <xs:element name="minY" type="xs:int"/>
+         <xs:element name="minZ" type="xs:int"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="timeSeriesGraphOptions">
+      <xs:complexContent>
+         <xs:extension base="tns:graphOptions">
+            <xs:sequence>
+               <xs:element name="BFieldTraceOptions" type="tns:bFieldTraceOptions" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+               <xs:element name="coordinateOptions" type="tns:coordinateOptions" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+               <xs:element name="distanceFromOptions" type="tns:distanceFromOptions" minOccurs="0"/>
+               <xs:element name="valueOptions" type="tns:valueOptions" minOccurs="0"/>
+            </xs:sequence>
+         </xs:extension>
+      </xs:complexContent>
+   </xs:complexType>
+   <xs:complexType name="bFieldTraceOptions">
+      <xs:sequence>
+         <xs:element name="coordinateSystem" type="tns:coordinateSystem" minOccurs="0"/>
+         <xs:element name="fieldLineLength" type="xs:boolean"/>
+         <xs:element name="footpointLatitude" type="xs:boolean"/>
+         <xs:element name="footpointLongitude" type="xs:boolean"/>
+         <xs:element name="hemisphere" type="tns:hemisphere" minOccurs="0"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="coordinateOptions">
+      <xs:sequence>
+         <xs:element name="component" type="tns:coordinateComponent" minOccurs="0"/>
+         <xs:element name="coordinateSystem" type="tns:coordinateSystem" minOccurs="0"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="distanceFromOptions">
+      <xs:sequence>
+         <xs:element name="BGseXYZ" type="xs:boolean"/>
+         <xs:element name="bowShock" type="xs:boolean"/>
+         <xs:element name="MPause" type="xs:boolean"/>
+         <xs:element name="neutralSheet" type="xs:boolean"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="valueOptions">
+      <xs:sequence>
+         <xs:element name="BFieldStrength" type="xs:boolean"/>
+         <xs:element name="dipoleInvLat" type="xs:boolean"/>
+         <xs:element name="dipoleLValue" type="xs:boolean"/>
+         <xs:element name="radialDistance" type="xs:boolean"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="bFieldModelOptions">
+      <xs:sequence>
+         <xs:element name="externalModel" type="tns:bFieldModelParameters" minOccurs="0"/>
+         <xs:element name="fieldLinesStopAltitude" type="xs:double"/>
+         <xs:element name="internalModel" type="tns:internalBFieldModel" minOccurs="0"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="bFieldModelParameters">
+      <xs:sequence>
+         <xs:element name="byImf" type="xs:float"/>
+         <xs:element name="bzImf" type="xs:float"/>
+         <xs:element name="dst" type="xs:int"/>
+         <xs:element name="model" type="tns:externalBFieldModel" minOccurs="0"/>
+         <xs:element name="parameterValues" type="xs:short"/>
+         <xs:element name="solarWindPressure" type="xs:float"/>
+         <xs:element name="useFixedValues" type="xs:boolean"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="satelliteSpecification">
+      <xs:sequence>
+         <xs:element name="id" type="xs:string" minOccurs="0"/>
+         <xs:element name="resolutionFactor" type="xs:int"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="getGraphsResponse">
+      <xs:sequence>
+         <xs:element name="return" type="tns:fileResult" minOccurs="0"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="fileResult">
+      <xs:complexContent>
+         <xs:extension base="tns:result">
+            <xs:sequence>
+               <xs:element name="urls" type="xs:string" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+         </xs:extension>
+      </xs:complexContent>
+   </xs:complexType>
+   <xs:complexType name="result">
+      <xs:sequence>
+         <xs:element name="statusCode" type="tns:resultStatusCode" minOccurs="0"/>
+         <xs:element name="statusSubCode" type="tns:resultStatusSubCode" minOccurs="0"/>
+         <xs:element name="statusText" type="xs:string" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="SSCResourceLimitExceededException">
+      <xs:sequence>
+         <xs:element name="message" type="xs:string" minOccurs="0"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="getAllGroundStations">
+      <xs:sequence/>
+   </xs:complexType>
+   <xs:complexType name="getAllGroundStationsResponse">
+      <xs:sequence>
+         <xs:element name="return" type="tns:groundStationDescription" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="groundStationDescription">
+      <xs:sequence>
+         <xs:element name="id" type="xs:string" minOccurs="0"/>
+         <xs:element name="latitude" type="xs:float"/>
+         <xs:element name="longitude" type="xs:float"/>
+         <xs:element name="name" type="xs:string" minOccurs="0"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="getAcknowledgements">
+      <xs:sequence/>
+   </xs:complexType>
+   <xs:complexType name="getAcknowledgementsResponse">
+      <xs:sequence>
+         <xs:element name="return" type="tns:fileResult" minOccurs="0"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="getPrivacyAndImportantNotices">
+      <xs:sequence/>
+   </xs:complexType>
+   <xs:complexType name="getPrivacyAndImportantNoticesResponse">
+      <xs:sequence>
+         <xs:element name="return" type="tns:fileResult" minOccurs="0"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="getDataFiles">
+      <xs:sequence>
+         <xs:element name="arg0" type="tns:dataFileRequest" minOccurs="0"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="dataFileRequest">
+      <xs:complexContent>
+         <xs:extension base="tns:dataRequest">
+            <xs:sequence>
+               <xs:element name="formatOptions" type="tns:formatOptions" minOccurs="0"/>
+            </xs:sequence>
+         </xs:extension>
+      </xs:complexContent>
+   </xs:complexType>
+   <xs:complexType name="dataRequest">
+      <xs:complexContent>
+         <xs:extension base="tns:request">
+            <xs:sequence>
+               <xs:element name="locationFilterOptions" type="tns:locationFilterOptions" minOccurs="0"/>
+               <xs:element name="outputOptions" type="tns:outputOptions" minOccurs="0"/>
+               <xs:element name="regionFilterOptions" type="tns:regionFilterOptions" minOccurs="0"/>
+            </xs:sequence>
+         </xs:extension>
+      </xs:complexContent>
+   </xs:complexType>
+   <xs:complexType name="formatOptions">
+      <xs:sequence>
+         <xs:element name="cdf" type="xs:boolean"/>
+         <xs:element name="dateFormat" type="tns:dateFormat" minOccurs="0"/>
+         <xs:element name="degreeFormat" type="tns:degreeFormat" minOccurs="0"/>
+         <xs:element name="degreePrecision" type="xs:short"/>
+         <xs:element name="distancePrecision" type="xs:short"/>
+         <xs:element name="distanceUnits" type="tns:distanceUnits" minOccurs="0"/>
+         <xs:element name="latLonFormat" type="tns:latLonFormat" minOccurs="0"/>
+         <xs:element name="linesPerPage" type="xs:short"/>
+         <xs:element name="timeFormat" type="tns:timeFormat" minOccurs="0"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="locationFilterOptions">
+      <xs:sequence>
+         <xs:element name="allFilters" type="xs:boolean"/>
+         <xs:element name="dipoleInvariantLatitude" type="tns:locationFilter" minOccurs="0"/>
+         <xs:element name="dipoleLValue" type="tns:locationFilter" minOccurs="0"/>
+         <xs:element name="distanceFromBowShock" type="tns:locationFilter" minOccurs="0"/>
+         <xs:element name="distanceFromCenterOfEarth" type="tns:locationFilter" minOccurs="0"/>
+         <xs:element name="distanceFromMagnetopause" type="tns:locationFilter" minOccurs="0"/>
+         <xs:element name="distanceFromNeutralSheet" type="tns:locationFilter" minOccurs="0"/>
+         <xs:element name="magneticFieldStrength" type="tns:locationFilter" minOccurs="0"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="locationFilter">
+      <xs:sequence>
+         <xs:element name="lowerDate" type="xs:dateTime" minOccurs="0"/>
+         <xs:element name="lowerLimit" type="xs:double" minOccurs="0"/>
+         <xs:element name="maximum" type="xs:boolean"/>
+         <xs:element name="minimum" type="xs:boolean"/>
+         <xs:element name="upperDate" type="xs:dateTime" minOccurs="0"/>
+         <xs:element name="upperLimit" type="xs:double" minOccurs="0"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="outputOptions">
+      <xs:sequence>
+         <xs:element name="allLocationFilters" type="xs:boolean"/>
+         <xs:element name="BFieldTraceOptions" type="tns:bFieldTraceOptions" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+         <xs:element name="coordinateOptions" type="tns:filteredCoordinateOptions" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+         <xs:element name="distanceFromOptions" type="tns:distanceFromOptions" minOccurs="0"/>
+         <xs:element name="minMaxPoints" type="xs:int"/>
+         <xs:element name="regionOptions" type="tns:regionOptions" minOccurs="0"/>
+         <xs:element name="valueOptions" type="tns:valueOptions" minOccurs="0"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="filteredCoordinateOptions">
+      <xs:complexContent>
+         <xs:extension base="tns:coordinateOptions">
+            <xs:sequence>
+               <xs:element name="filter" type="tns:locationFilter" minOccurs="0"/>
+            </xs:sequence>
+         </xs:extension>
+      </xs:complexContent>
+   </xs:complexType>
+   <xs:complexType name="regionOptions">
+      <xs:sequence>
+         <xs:element name="northBTracedFootpoint" type="xs:boolean"/>
+         <xs:element name="radialTracedFootpoint" type="xs:boolean"/>
+         <xs:element name="southBTracedFootpoint" type="xs:boolean"/>
+         <xs:element name="spacecraft" type="xs:boolean"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="regionFilterOptions">
+      <xs:sequence>
+         <xs:element name="magneticTraceRegions" type="tns:mappedRegionFilterOptions" minOccurs="0"/>
+         <xs:element name="radialTraceRegions" type="tns:mappedRegionFilterOptions" minOccurs="0"/>
+         <xs:element name="spaceRegions" type="tns:spaceRegionsFilterOptions" minOccurs="0"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="mappedRegionFilterOptions">
+      <xs:sequence>
+         <xs:element name="auroralOval" type="tns:hemisphereOptions" minOccurs="0"/>
+         <xs:element name="cleft" type="tns:hemisphereOptions" minOccurs="0"/>
+         <xs:element name="cusp" type="tns:hemisphereOptions" minOccurs="0"/>
+         <xs:element name="lowLatitude" type="xs:boolean"/>
+         <xs:element name="midLatitude" type="tns:hemisphereOptions" minOccurs="0"/>
+         <xs:element name="polarCap" type="tns:hemisphereOptions" minOccurs="0"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="hemisphereOptions">
+      <xs:sequence>
+         <xs:element name="north" type="xs:boolean"/>
+         <xs:element name="south" type="xs:boolean"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="spaceRegionsFilterOptions">
+      <xs:sequence>
+         <xs:element name="daysideMagnetosheath" type="xs:boolean"/>
+         <xs:element name="daysideMagnetosphere" type="xs:boolean"/>
+         <xs:element name="daysidePlasmasphere" type="xs:boolean"/>
+         <xs:element name="highLatitudeBoundaryLayer" type="xs:boolean"/>
+         <xs:element name="interplanetaryMedium" type="xs:boolean"/>
+         <xs:element name="lowLatitudeBoundaryLayer" type="xs:boolean"/>
+         <xs:element name="nightsideMagnetosheath" type="xs:boolean"/>
+         <xs:element name="nightsideMagnetosphere" type="xs:boolean"/>
+         <xs:element name="nightsidePlasmasphere" type="xs:boolean"/>
+         <xs:element name="plasmaSheet" type="xs:boolean"/>
+         <xs:element name="tailLobe" type="xs:boolean"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="getDataFilesResponse">
+      <xs:sequence>
+         <xs:element name="return" type="tns:fileResult" minOccurs="0"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="getAllSatellites">
+      <xs:sequence/>
+   </xs:complexType>
+   <xs:complexType name="getAllSatellitesResponse">
+      <xs:sequence>
+         <xs:element name="return" type="tns:satelliteDescription" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="getData">
+      <xs:sequence>
+         <xs:element name="arg0" type="tns:dataRequest" minOccurs="0"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="getDataResponse">
+      <xs:sequence>
+         <xs:element name="return" type="tns:dataResult" minOccurs="0"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="dataResult">
+      <xs:complexContent>
+         <xs:extension base="tns:result">
+            <xs:sequence>
+               <xs:element name="data" type="tns:satelliteData" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+         </xs:extension>
+      </xs:complexContent>
+   </xs:complexType>
+   <xs:complexType name="satelliteData">
+      <xs:sequence>
+         <xs:element name="BGseX" type="xs:double" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+         <xs:element name="BGseY" type="xs:double" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+         <xs:element name="BGseZ" type="xs:double" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+         <xs:element name="BTraceData" type="tns:bTraceData" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+         <xs:element name="bowShockDistance" type="xs:double" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+         <xs:element name="coordinates" type="tns:coordinateData" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+         <xs:element name="dipoleInvariantLatitude" type="xs:float" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+         <xs:element name="dipoleLValue" type="xs:double" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+         <xs:element name="id" type="xs:string" minOccurs="0"/>
+         <xs:element name="magneticStrength" type="xs:double" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+         <xs:element name="magnetoPauseDistance" type="xs:double" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+         <xs:element name="neutralSheetDistance" type="xs:double" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+         <xs:element name="northBTracedRegions" type="tns:footpointRegion" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+         <xs:element name="radialLength" type="xs:double" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+         <xs:element name="radialTraceFootpointRegion" type="tns:footpointRegion" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+         <xs:element name="southBTracedRegions" type="tns:footpointRegion" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+         <xs:element name="spacecraftRegion" type="tns:spaceRegion" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+         <xs:element name="time" type="xs:dateTime" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="bTraceData">
+      <xs:sequence>
+         <xs:element name="arcLength" type="xs:double" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+         <xs:element name="coordinateSystem" type="tns:coordinateSystem" minOccurs="0"/>
+         <xs:element name="hemisphere" type="tns:hemisphere" minOccurs="0"/>
+         <xs:element name="latitude" type="xs:float" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+         <xs:element name="longitude" type="xs:float" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="coordinateData">
+      <xs:sequence>
+         <xs:element name="coordinateSystem" type="tns:coordinateSystem" minOccurs="0"/>
+         <xs:element name="latitude" type="xs:float" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+         <xs:element name="localTime" type="xs:double" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+         <xs:element name="longitude" type="xs:float" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+         <xs:element name="x" type="xs:double" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+         <xs:element name="y" type="xs:double" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+         <xs:element name="z" type="xs:double" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:simpleType name="projectionCoordinateSystem">
+      <xs:restriction base="xs:string">
+         <xs:enumeration value="GEO"/>
+         <xs:enumeration value="GM"/>
+         <xs:enumeration value="SM"/>
+      </xs:restriction>
+   </xs:simpleType>
+   <xs:simpleType name="polarMapOrientation">
+      <xs:restriction base="xs:string">
+         <xs:enumeration value="EQUATORIAL"/>
+         <xs:enumeration value="NORTH_POLE"/>
+         <xs:enumeration value="SOUTH_POLE"/>
+      </xs:restriction>
+   </xs:simpleType>
+   <xs:simpleType name="mapProjection">
+      <xs:restriction base="xs:string">
+         <xs:enumeration value="CYLINDRICAL"/>
+         <xs:enumeration value="MERCATOR"/>
+         <xs:enumeration value="MOLLEWEIDE"/>
+         <xs:enumeration value="STEREOGRAPHIC"/>
+         <xs:enumeration value="ORTHOGRAPHIC"/>
+         <xs:enumeration value="AZIMUTHAL"/>
+      </xs:restriction>
+   </xs:simpleType>
+   <xs:simpleType name="trace">
+      <xs:restriction base="xs:string">
+         <xs:enumeration value="RADIAL"/>
+         <xs:enumeration value="B_FIELD_NORTH"/>
+         <xs:enumeration value="B_FIELD_SOUTH"/>
+      </xs:restriction>
+   </xs:simpleType>
+   <xs:simpleType name="coordinateSystem">
+      <xs:restriction base="xs:string">
+         <xs:enumeration value="GEI_TOD"/>
+         <xs:enumeration value="GEI_J2000"/>
+         <xs:enumeration value="GEO"/>
+         <xs:enumeration value="GM"/>
+         <xs:enumeration value="GSE"/>
+         <xs:enumeration value="GSM"/>
+         <xs:enumeration value="SM"/>
+      </xs:restriction>
+   </xs:simpleType>
+   <xs:simpleType name="hemisphere">
+      <xs:restriction base="xs:string">
+         <xs:enumeration value="SOUTH"/>
+         <xs:enumeration value="NORTH"/>
+      </xs:restriction>
+   </xs:simpleType>
+   <xs:simpleType name="coordinateComponent">
+      <xs:restriction base="xs:string">
+         <xs:enumeration value="X"/>
+         <xs:enumeration value="Y"/>
+         <xs:enumeration value="Z"/>
+         <xs:enumeration value="LAT"/>
+         <xs:enumeration value="LON"/>
+         <xs:enumeration value="LOCAL_TIME"/>
+      </xs:restriction>
+   </xs:simpleType>
+   <xs:simpleType name="externalBFieldModel">
+      <xs:restriction base="xs:string">
+         <xs:enumeration value="T87"/>
+         <xs:enumeration value="T89c"/>
+         <xs:enumeration value="T96"/>
+      </xs:restriction>
+   </xs:simpleType>
+   <xs:simpleType name="internalBFieldModel">
+      <xs:restriction base="xs:string">
+         <xs:enumeration value="IGRF"/>
+         <xs:enumeration value="SIMPLE_DIPOLE"/>
+      </xs:restriction>
+   </xs:simpleType>
+   <xs:simpleType name="resultStatusCode">
+      <xs:restriction base="xs:string">
+         <xs:enumeration value="SUCCESS"/>
+         <xs:enumeration value="CONDITIONAL_SUCCESS"/>
+         <xs:enumeration value="ERROR"/>
+      </xs:restriction>
+   </xs:simpleType>
+   <xs:simpleType name="resultStatusSubCode">
+      <xs:restriction base="xs:string">
+         <xs:enumeration value="SUCCESS"/>
+         <xs:enumeration value="MISSING_REQUEST"/>
+         <xs:enumeration value="MISSING_SATELLITES"/>
+         <xs:enumeration value="INVALID_BEGIN_TIME"/>
+         <xs:enumeration value="INVALID_END_TIME"/>
+         <xs:enumeration value="INVALID_SATELLITE"/>
+         <xs:enumeration value="INVALID_TIME_RANGE"/>
+         <xs:enumeration value="INVALID_RESOLUTION_FACTOR"/>
+         <xs:enumeration value="MISSING_OUTPUT_OPTIONS"/>
+         <xs:enumeration value="MISSING_COORD_OPTIONS"/>
+         <xs:enumeration value="MISSING_COORD_SYSTEM"/>
+         <xs:enumeration value="INVALID_COORD_SYSTEM"/>
+         <xs:enumeration value="MISSING_COORD_COMPONENT"/>
+         <xs:enumeration value="MISSING_GRAPH_OPTIONS"/>
+         <xs:enumeration value="MISSING_COORDINATE_SYSTEM"/>
+         <xs:enumeration value="MISSING_COORDINATE_COMPONENT"/>
+         <xs:enumeration value="SERVER_ERROR"/>
+      </xs:restriction>
+   </xs:simpleType>
+   <xs:simpleType name="dateFormat">
+      <xs:restriction base="xs:string">
+         <xs:enumeration value="YYYY_DDD"/>
+         <xs:enumeration value="YY_MM_DD"/>
+         <xs:enumeration value="YY_MMM_DD"/>
+         <xs:enumeration value="YY_MMM_DD_2"/>
+      </xs:restriction>
+   </xs:simpleType>
+   <xs:simpleType name="degreeFormat">
+      <xs:restriction base="xs:string">
+         <xs:enumeration value="DECIMAL"/>
+         <xs:enumeration value="MINUTES"/>
+         <xs:enumeration value="MINUTES_SECONDS"/>
+      </xs:restriction>
+   </xs:simpleType>
+   <xs:simpleType name="distanceUnits">
+      <xs:restriction base="xs:string">
+         <xs:enumeration value="RE"/>
+         <xs:enumeration value="KM"/>
+         <xs:enumeration value="INT_KM"/>
+         <xs:enumeration value="E_KM"/>
+      </xs:restriction>
+   </xs:simpleType>
+   <xs:simpleType name="latLonFormat">
+      <xs:restriction base="xs:string">
+         <xs:enumeration value="LAT_90_LON_360"/>
+         <xs:enumeration value="LAT_90_LON_180"/>
+         <xs:enumeration value="LAT_90_SN_LON_180_WE"/>
+      </xs:restriction>
+   </xs:simpleType>
+   <xs:simpleType name="timeFormat">
+      <xs:restriction base="xs:string">
+         <xs:enumeration value="HH_MM"/>
+         <xs:enumeration value="HH_MM_SS"/>
+         <xs:enumeration value="HH_HHHH"/>
+      </xs:restriction>
+   </xs:simpleType>
+   <xs:simpleType name="footpointRegion">
+      <xs:restriction base="xs:string">
+         <xs:enumeration value="NOT_APPLICABLE"/>
+         <xs:enumeration value="NORTH_CUSP"/>
+         <xs:enumeration value="SOUTH_CUSP"/>
+         <xs:enumeration value="NORTH_CLEFT"/>
+         <xs:enumeration value="SOUTH_CLEFT"/>
+         <xs:enumeration value="NORTH_AURORAL_OVAL"/>
+         <xs:enumeration value="SOUTH_AURORAL_OVAL"/>
+         <xs:enumeration value="NORTH_POLAR_CAP"/>
+         <xs:enumeration value="SOUTH_POLAR_CAP"/>
+         <xs:enumeration value="NORTH_MID_LATITUDE"/>
+         <xs:enumeration value="SOUTH_MID_LATITUDE"/>
+         <xs:enumeration value="LOW_LATITUDE"/>
+      </xs:restriction>
+   </xs:simpleType>
+   <xs:simpleType name="spaceRegion">
+      <xs:restriction base="xs:string">
+         <xs:enumeration value="INTERPLANETARY_MEDIUM"/>
+         <xs:enumeration value="DAYSIDE_MAGNETOSHEATH"/>
+         <xs:enumeration value="NIGHTSIDE_MAGNETOSHEATH"/>
+         <xs:enumeration value="DAYSIDE_MAGNETOSPHERE"/>
+         <xs:enumeration value="NIGHTSIDE_MAGNETOSPHERE"/>
+         <xs:enumeration value="PLASMA_SHEET"/>
+         <xs:enumeration value="TAIL_LOBE"/>
+         <xs:enumeration value="LOW_LATITUDE_BOUNDARY_LAYER"/>
+         <xs:enumeration value="HIGH_LATITUDE_BOUNDARY_LAYER"/>
+         <xs:enumeration value="DAYSIDE_PLASMASPHERE"/>
+         <xs:enumeration value="NIGHTSIDE_PLASMASPHERE"/>
+      </xs:restriction>
+   </xs:simpleType>
+</xs:schema>
