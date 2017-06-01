@@ -75,6 +75,25 @@
             </plugin>
         </plugins>
     </build>
+    <profiles>
+        <profile>
+            <id>rocket</id>
+    <repositories>
+        <!--<repository><id>http://central.maven.org/maven2/</id>-->
+        <!--<url>http://central.maven.org/maven2/</url>-->
+        <!--</repository>-->
+        <repository>
+            <id>jboss</id>
+            <url>https://repository.jboss.org/</url>
+        </repository>
+        <repository>
+            <id>repository.jboss.org-public</id>
+            <name>JBoss.org Maven repository</name>
+            <url>https://repository.jboss.org/nexus/content/groups/public</url>
+        </repository>
+    </repositories>
+        </profile>
+    </profiles>
 
     <dependencies>
         <dependency>
@@ -123,22 +142,51 @@
         <dependency>
             <groupId>org.apache.activemq</groupId>
             <artifactId>activemq-core</artifactId>
-            <version>5.3.0</version>
+            <version>5.7.0</version>
             <scope>compile</scope>
             <!-- <exclusions> <exclusion> <artifactId>camel-core</artifactId> <groupId>org.apache.camel</groupId>
                 </exclusion> </exclusions> -->
         </dependency>
+        <!--<dependency>-->
+            <!--<groupId>javax.jms</groupId>-->
+            <!--<artifactId>jms</artifactId>-->
+            <!--<version>1.1</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>com.sun.jmx</groupId>-->
+            <!--<artifactId>jmxri</artifactId>-->
+            <!--<version>1.2.1</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>com.sun.jdmk</groupId>-->
+            <!--<artifactId>jmxtools</artifactId>-->
+            <!--<version>1.2.1</version>-->
+        <!--</dependency>-->
         <dependency>
             <groupId>GFX</groupId>
             <artifactId>GFX</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
 
-        <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-            <version>1.2.15</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>log4j</groupId>-->
+            <!--<artifactId>log4j</artifactId>-->
+            <!--<version>1.2.15</version>-->
+            <!--<exclusions>-->
+                <!--<exclusion>-->
+                    <!--<groupId>com.sun.jmx</groupId>-->
+                    <!--<artifactId>jmxri</artifactId>-->
+                <!--</exclusion>-->
+                <!--<exclusion>-->
+                    <!--<groupId>javax.jms</groupId>-->
+                    <!--<artifactId>jms</artifactId>-->
+                <!--</exclusion>-->
+                <!--<exclusion>-->
+                    <!--<groupId>com.sun.jdmk</groupId>-->
+                    <!--<artifactId>jmxtools</artifactId>-->
+                <!--</exclusion>-->
+            <!--</exclusions>-->
+        <!--</dependency>-->
         <dependency>
             <groupId>org.jmock</groupId>
             <artifactId>jmock-junit4</artifactId>
