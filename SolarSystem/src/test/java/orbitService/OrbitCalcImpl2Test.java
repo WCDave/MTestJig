@@ -3,13 +3,11 @@ package orbitService;
 import domain.SolarSystemObject;
 import orbitDataDao.IOrbitData;
 import orbitService.impl.OrbitCalcImpl2;
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -25,6 +23,7 @@ public class OrbitCalcImpl2Test {
     IOrbitCalc iut = new OrbitCalcImpl2();
 
     @Autowired
+    @Qualifier("orbitDataDaoImpl1")
     IOrbitData orbitDao;
 
     @BeforeClass

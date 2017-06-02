@@ -104,7 +104,7 @@ public abstract class Sphere extends Abstract3DModelObject implements Shadeable,
     vectorFromView = aView.getObjectVectorFromView();
 //        double zDotProdCheck = VMath.dotprod(aView.getCoordSys().getVectorForViewDirection(), VMath.normalize(vectorFromView) ) + Math.asin(sRadius/VMath.mag(vectorFromView));
 //        if(zDotProdCheck < .2) return;
-    aView.setDistanceDrawingFactorForView(sRadius / VMath.mag(vectorFromView) * -.9988);
+    aView.setDistanceDrawingFactorForView(sRadius / VMath.mag(vectorFromView) * -.998899);
 
     //boolean outlineFlag = VMath.mag(vectorFromView) < OUTLINELIMIT && drawFaceOutlines;
     synchronized (faceList) {
