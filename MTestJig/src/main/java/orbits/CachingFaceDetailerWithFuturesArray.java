@@ -26,11 +26,11 @@ public class CachingFaceDetailerWithFuturesArray implements ICachingDetailer<Fac
   private ExecutorService executor = Executors.newFixedThreadPool(5);
   private int LIST_SIZE;
 
-  Map<Facet, List<Facet>[]> facetLevelMap = new MapMaker().expiration(5, TimeUnit.MINUTES).makeMap();
+  Map<Facet, List<Facet>[]> facetLevelMap = new MapMaker().expiration(4, TimeUnit.MINUTES).makeMap();
 
   public CachingFaceDetailerWithFuturesArray(int maxLevel) {
     this.maxLevel = maxLevel;
-    LIST_SIZE = 2 << (12 - 1);
+    LIST_SIZE = 2 << (13 - 1);
   }
 
   @Override
