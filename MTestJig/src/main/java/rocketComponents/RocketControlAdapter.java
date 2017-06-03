@@ -155,6 +155,11 @@ public class RocketControlAdapter implements IControlAdapter {
   @Override
   public void selectReferenceObject(Abstract3DModelObject object) {
     planetSelectCb.getModel().setSelectedItem(object.getName());
+  }
 
+  @Override
+  public boolean toggleEnablePlanetSelect() {
+    planetSelectCb.setEnabled(!planetSelectCb.isEnabled());
+    return planetSelectCb.isEnabled();
   }
 }

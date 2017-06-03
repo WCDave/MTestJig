@@ -40,4 +40,6 @@ public interface IControlAdapter {
   void rcsThrustOff();
 
   void selectReferenceObject(Abstract3DModelObject object);
+
+  boolean toggleEnablePlanetSelect();
 }

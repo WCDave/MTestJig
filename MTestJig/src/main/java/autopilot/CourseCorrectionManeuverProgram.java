@@ -33,6 +33,7 @@ public class CourseCorrectionManeuverProgram extends AFCSTargetingStrategy {
 
     computer.setReferenceObject(planet);
     computer.getControlAdapter().selectReferenceObject(planet);
+    computer.getControlAdapter().toggleEnablePlanetSelect();
     log.info("referenced object=" + computer.getReferenceObject().getName());
     Utils.sleep(1000);
 
@@ -89,6 +90,8 @@ public class CourseCorrectionManeuverProgram extends AFCSTargetingStrategy {
       executorService.submit(new KeplerCalc(computer.getReferenceObject(), true)).get().getKeplerianElements();
     }
     catch (Exception  e) {}
+
+    computer.getControlAdapter().toggleEnablePlanetSelect();
 
   }
 
