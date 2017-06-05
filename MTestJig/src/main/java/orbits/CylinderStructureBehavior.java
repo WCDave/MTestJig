@@ -25,7 +25,7 @@ public class CylinderStructureBehavior implements IGenericSatelliteStructureBeha
   public void processStructure(AbstractView view) {
     float drag = (float) VMath.mag(craft.getDrag()) / (NavComputer.EarthG * craft.getMass());
     if (drag < 2 || cylinder.getFaceList().isEmpty()) {
-      synchronized (craft) {
+      synchronized (craft.getCoordSys()) {
         Cylinder.construct(cylinder);
         cylinder.set3DObjectForDraw(view);
       }

@@ -136,7 +136,7 @@ public class PhysicsRunnable implements Runnable {
     for (int i = 0; i < 3; i++)
       velVec[i] += dt * (grav[i] + thrust[i] + drag[i] + norm[i]) / craft.getMass();
 
-    synchronized (craft) {
+    synchronized (craft.getCoordSys()) {
       craft.setPositionVec(VMath.vecAdd(craft.getPosition(), VMath.vecMultByScalar(velVec, dt)));
     }
     //System.out.println(trackedBody.getPositionVec()[0]+" "+trackedBody.getPositionVec()[1]+" "+trackedBody.getPositionVec()[2]);
