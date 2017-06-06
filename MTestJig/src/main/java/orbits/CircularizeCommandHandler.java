@@ -1,6 +1,8 @@
 package orbits;
 
 import autopilot.AFCSTargetingStrategy;
+import autopilot.AbstractCircularizationTarget;
+import autopilot.CircularizationLowerApoApsis;
 import autopilot.CircularizationRaisePeriApsis;
 import autopilot.CircularizeProgram;
 
@@ -19,6 +21,13 @@ public class CircularizeCommandHandler implements ICommandHandler {
 
   @Override
   public AFCSTargetingStrategy handle(Matcher m) {
-    return new CircularizeProgram(computer, new CircularizationRaisePeriApsis(computer));
+    AbstractCircularizationTarget target = null;
+    if(m.group().contains("-")) {
+      target = new CircularizationLowerApoApsis(computer);
+    }
+    else {
+      target =  new CircularizationRaisePeriApsis(computer);
+    }
+    return new CircularizeProgram(computer, target);
   }
 }

@@ -89,7 +89,7 @@ public class NavComputer extends AbstractInstrument {
     targetingStrategyMap = new HashMap<Pattern, ICommandHandler>(){{
       put(Pattern.compile("[A]\\d{1,5}.?\\d*"), new ApogeeCommandHandler(NavComputer.this));
       put(Pattern.compile("[I]-?\\d{1,5}.?\\d*"), new PlaneChangeCommandHandler(NavComputer.this));
-      put(Pattern.compile("[C]"), new CircularizeCommandHandler(NavComputer.this));
+      put(Pattern.compile("[C]-?"), new CircularizeCommandHandler(NavComputer.this));
     }};
 
     controlAdapter = aView.getControlAdapter();
@@ -152,8 +152,9 @@ public class NavComputer extends AbstractInstrument {
       @Override
       public void execute() {
         Rocket r = (Rocket) NavComputer.this.craft;
-        synchronized (r) {
+
           Craft c = r.unloadBay("Test1");
+        synchronized (c.getCoordSys()) {
           World3DContainer.getInstance().addCraft(c);
           Thread t = new Thread(new SatelliteSpinUp(c), "Spinup");
           c.getBehaviorThreads().add(t);

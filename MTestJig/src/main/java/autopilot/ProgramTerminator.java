@@ -17,6 +17,10 @@ public class ProgramTerminator extends AFCSStrategy {
     ComputerAbstractButton button = computer.getButton(ComputerButtonKeys.PROGRADE);
     button.setSelected(false);
     button.doClick();
+
+    button = computer.getButton(ComputerButtonKeys.RETROGRADE);
+    button.setSelected(false);
+    button.doClick();
     computer.getButton(ComputerButtonKeys.AUTOLAUNCH).setSelected(false);
     computer.setAnnunMsg("Program Ended");
     computer.setFlashAnnun(true);
