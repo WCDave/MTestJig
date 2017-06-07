@@ -40,7 +40,7 @@ public class CircularizationLowerApoApsis extends AbstractCircularizationTarget 
     double mu = -PhysicsRunnable.G * ((Planet) referencedObject).getMass();
     double targetV = FastMath.sqrt(mu / (periApsis * NavComputer.METERS_PER_MILE));
     deltaV = ((Double) computer.getOrbitElements().get(OrbitElementKeys.vPer)).doubleValue() * .44704 - targetV;
-    System.out.println(Math.abs(radius - periApsis)+", deltaV="+deltaV);
+    //System.out.println(Math.abs(radius - periApsis)+", deltaV="+deltaV);
     //return Math.abs(radius - periApsis) < VMath.mag(cs.getVelocityAsVec()) * .0002236f;
     boolean result = false;
     if(Math.abs(radius - periApsis) < Math.abs(deltaV)/1200) {
