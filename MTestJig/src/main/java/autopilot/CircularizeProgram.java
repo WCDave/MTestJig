@@ -56,7 +56,7 @@ public class CircularizeProgram extends AFCSTargetingStrategy {
 
       computer.setAnnunMsg("OMS " + String.format("%2d", omsBurnNumber++) + " Burn");
 
-      double testEcc = 10;
+      double testEcc = 100;
       while (VMath.mag((double[]) computer.getOrbitElements().get(OrbitElementKeys.ecc)) > eccThreshold && VMath.mag((double[]) computer.getOrbitElements().get(OrbitElementKeys.ecc)) <= testEcc) {
         testEcc = VMath.mag((double[]) computer.getOrbitElements().get(OrbitElementKeys.ecc));
         computer.getControlAdapter().setThrottle((int) (FastMath.min(110, testEcc * 15000)));

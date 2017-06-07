@@ -15,6 +15,7 @@ public class CircularizationLowerApoApsis extends AbstractCircularizationTarget 
   private double deltaV;
   private static final double deltaVDerivedTarget = .00002 / 350;
   private Logger log = Logger.getLogger(CircularizationLowerApoApsis.class);
+  private int targetCounter;
 
   public CircularizationLowerApoApsis(NavComputer computer) {
     super(computer);
@@ -35,8 +36,21 @@ public class CircularizationLowerApoApsis extends AbstractCircularizationTarget 
   public boolean targetReached() {
     double periApsis = (Double) computer.getOrbitElements().get(OrbitElementKeys.rPer);
     double radius = VMath.mag(VMath.vecSubtract(cs.getPositionVec(), referencedObject.getCoordSys().getPositionVec())) / NavComputer.METERS_PER_MILE;
-    //System.out.println(new Date()+" "+Math.abs(radius - periApsis));
-    return Math.abs(radius - periApsis) < VMath.mag(cs.getVelocityAsVec()) * .0002236f;
+
+    double mu = -PhysicsRunnable.G * ((Planet) referencedObject).getMass();
+    double targetV = FastMath.sqrt(mu / (periApsis * NavComputer.METERS_PER_MILE));
+    deltaV = ((Double) computer.getOrbitElements().get(OrbitElementKeys.vPer)).doubleValue() * .44704 - targetV;
+    System.out.println(Math.abs(radius - periApsis)+", deltaV="+deltaV);
+    //return Math.abs(radius - periApsis) < VMath.mag(cs.getVelocityAsVec()) * .0002236f;
+    boolean result = false;
+    if(Math.abs(radius - periApsis) < Math.abs(deltaV)/1200) {
+      targetCounter++;
+      result = targetCounter > 2;
+    }
+    else {
+      targetCounter = 0;
+    }
+    return result;
   }
 
 
@@ -45,6 +59,6 @@ public class CircularizationLowerApoApsis extends AbstractCircularizationTarget 
     ComputerAbstractButton button = computer.getButton(ComputerButtonKeys.RETROGRADE);
     button.setSelected(true);
     button.doClick();
+    targetCounter = 0;
   }
-
 }
