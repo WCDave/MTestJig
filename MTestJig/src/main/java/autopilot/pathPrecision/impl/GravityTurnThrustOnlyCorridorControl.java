@@ -20,13 +20,13 @@ public class GravityTurnThrustOnlyCorridorControl extends AbstractCorridorContro
 
   @Override
   public void controlChange(ICorridorSegment<Integer, Integer> corridor) {
-    int pitch = getPitch();
+    //int pitch = getPitch();
     int alt = getAlt();
     int result = 0;
 
     computer.getControlAdapter().rampAdjustThrust(baselineThrustValue - computer.getControlAdapter().getThrottleSetting(), ControlInputSource.COMPUTER);
     if (!isInCorridor(corridor, alt) ) {
-      result = -FastMath.round((alt - corridor.getCenter())/1000);
+      result = -FastMath.round((alt - corridor.getCenter())/2500);
       computer.getControlAdapter().rampAdjustThrust(result, ControlInputSource.COMPUTER);
       //System.out.println("correcting "+result);
     }
