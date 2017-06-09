@@ -98,7 +98,7 @@ public class TLIProgram extends AFCSTargetingStrategy {
 //
 //    return vs < 0 && critAngle >= tliCritAngle && critAngle <= tliCritAngle + .02d && VMath.dotprod(xProd, earth.getCoordSys().zAxis().getVectorForm()) > 0;
     //2.36
-    double angleDiff = (2 * Math.PI +(mke.getAop()+mke.getTa() - (rke.getAop()+rke.getTa()))) % (2 * Math.PI);
+    double angleDiff = (4 * Math.PI +(mke.getAop()+mke.getTa() - (rke.getAop()+rke.getTa()))) % (2 * Math.PI);
     if(angleDiff >2.25 && angleDiff < 2.27) {
       diffCount++;
     }
