@@ -45,7 +45,7 @@ public class CircularizationLowerApoApsis extends AbstractCircularizationTarget 
     boolean result = false;
     if(Math.abs(radius - periApsis) < Math.abs(deltaV)/1200) {
       targetCounter++;
-      result = targetCounter > 2;
+      result = targetCounter > 3;
     }
     else {
       targetCounter = 0;
