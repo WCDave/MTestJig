@@ -11,11 +11,7 @@ import orbits.Planet;
 import orbits.World3DContainer;
 import orbits.keplerian.KeplerCalc;
 import orbits.keplerian.KeplerianElements;
-import org.apache.commons.math3.util.FastMath;
 import org.apache.log4j.Logger;
-
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 public class TLIProgram extends AFCSTargetingStrategy {
 
@@ -98,7 +94,7 @@ public class TLIProgram extends AFCSTargetingStrategy {
 //
 //    return vs < 0 && critAngle >= tliCritAngle && critAngle <= tliCritAngle + .02d && VMath.dotprod(xProd, earth.getCoordSys().zAxis().getVectorForm()) > 0;
     //2.36
-    double angleDiff = (mke.getAop()+mke.getTa() - (rke.getAop()+rke.getTa())) % (2 * Math.PI);
+    double angleDiff = (4 * Math.PI +(mke.getAop()+mke.getTa() - (rke.getAop()+rke.getTa()))) % (2 * Math.PI);
     if(angleDiff >2.25 && angleDiff < 2.27) {
       diffCount++;
     }
