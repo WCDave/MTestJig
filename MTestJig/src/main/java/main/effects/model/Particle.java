@@ -84,7 +84,7 @@ public class Particle extends Craft {
 
   private void grayFade() {
     Color c = impl.getColor();
-    impl.setColor(new Color((int) Math.max(c.getRed() * .7, 32), (int) Math.max(c.getGreen() * .7, 32), (int) Math.min(c.getBlue() * 1.3, 32), 70));
+    impl.setColor(new Color((int) Math.max(c.getRed() * .7, 32), (int) Math.max(c.getGreen() * .7, 32), (int) Math.min(c.getBlue() * 1.3, 32), 190));
   }
 
   @Override
