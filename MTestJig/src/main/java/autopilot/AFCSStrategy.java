@@ -23,8 +23,8 @@ public abstract class AFCSStrategy extends Thread {
 
   @Override
   public void run() {
-    System.out.println(this.getClass().getName()+"  "+computer.getContinueProgramSequence().get() );
-    if (joinToThread != null  && computer.getContinueProgramSequence().get() ) {
+    //System.out.println(this.getClass().getName()+"  "+computer.getContinueProgramSequence().get() );
+    if (joinToThread != null ) {
       try {
         joinToThread.join();
       } catch (InterruptedException e) {
