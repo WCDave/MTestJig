@@ -2,11 +2,10 @@ package autopilot;
 
 import enums.ComputerButtonKeys;
 import gui.ComputerAbstractButton;
-
-import java.util.List;
-
 import main.Command;
 import orbits.NavComputer;
+
+import java.util.List;
 
 public class AutoLaunchComputerCommand implements Command {
   private NavComputer computer;
@@ -30,6 +29,8 @@ public class AutoLaunchComputerCommand implements Command {
     b.setSelected(false);
     b.doClick();
     computer.setAnnunMsg(null);
+
+    //computer.getContinueProgramSequence().set(Boolean.FALSE);
   }
 
 }
