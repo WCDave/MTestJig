@@ -11,11 +11,7 @@ import orbits.Planet;
 import orbits.World3DContainer;
 import orbits.keplerian.KeplerCalc;
 import orbits.keplerian.KeplerianElements;
-import org.apache.commons.math3.util.FastMath;
 import org.apache.log4j.Logger;
-
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 public class TLIProgram extends AFCSTargetingStrategy {
 
