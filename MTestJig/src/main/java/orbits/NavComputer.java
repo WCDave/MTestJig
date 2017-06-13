@@ -70,11 +70,11 @@ public class NavComputer extends AbstractInstrument {
 
   private CountDownLatch startUpLatch;
   private boolean isLaunched;
-  private InheritableThreadLocal<Boolean> continueProgramSequence = new InheritableThreadLocal<Boolean>(){
-    protected Boolean initialValue() {
-      return Boolean.TRUE;
-    }
-  };
+//  private InheritableThreadLocal<Boolean> continueProgramSequence = new InheritableThreadLocal<Boolean>(){
+//    protected Boolean initialValue() {
+//      return Boolean.TRUE;
+//    }
+//  };
 
   public NavComputer(CockPitView aView, CountDownLatch countDownLatch) {
     super(aView);
@@ -188,10 +188,6 @@ public class NavComputer extends AbstractInstrument {
     return buttonHash.get(key);
   }
 
-
-  public InheritableThreadLocal<Boolean> getContinueProgramSequence() {
-    return continueProgramSequence;
-  }
 
   public void executeDemo() {
     final Map<String, Component> ctrls = this.controlHash;
@@ -560,7 +556,7 @@ public class NavComputer extends AbstractInstrument {
   }
 
   private void runProgramSequence() {
-    continueProgramSequence.set(Boolean.TRUE);
+    //continueProgramSequence.set(Boolean.TRUE);
     craft.setAutoPilotInhibit(false);
     Iterator<AFCSStrategy> it = programSequence.iterator();
     AFCSStrategy as = null;

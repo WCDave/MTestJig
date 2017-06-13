@@ -45,6 +45,15 @@ public class TLIProgram extends AFCSTargetingStrategy {
     button.setSelected(true);
     button.doClick();
     log.info("Waiting for TLI burn target point " + tliCritAngle);
+
+    KeplerianElements rke = null;
+    KeplerianElements mke = null;
+    try {
+      rke = executorService.submit(new KeplerCalc(rocket)).get().getKeplerianElements();
+      mke = executorService.submit(new KeplerCalc(moon)).get().getKeplerianElements();
+    }
+    catch (Exception  e) {}
+    System.out.println("current position: "+(4 * Math.PI +(mke.getAop()+mke.getTa() - (rke.getAop()+rke.getTa()))) % (2 * Math.PI));
     //DebugThread dt = new DebugThread();
     //dt.start();
     while (!targetReached()) {
