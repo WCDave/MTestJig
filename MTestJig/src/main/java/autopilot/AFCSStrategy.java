@@ -1,11 +1,12 @@
 package autopilot;
 
-import Foundation.ThreadMonitorAndFactory;
-import main.Command;
-import orbits.NavComputer;
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import Foundation.ThreadMonitorAndFactory;
+
+import main.Command;
+import orbits.NavComputer;
 
 public abstract class AFCSStrategy extends Thread {
   protected NavComputer computer;
@@ -23,8 +24,8 @@ public abstract class AFCSStrategy extends Thread {
 
   @Override
   public void run() {
-    //System.out.println(this.getClass().getName()+"  "+computer.getContinueProgramSequence().get() );
-    if (joinToThread != null ) {
+    //System.out.println(this.getClass().getName()+" initialized");
+    if (joinToThread != null) {
       try {
         joinToThread.join();
       } catch (InterruptedException e) {
