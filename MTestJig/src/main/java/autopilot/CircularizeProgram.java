@@ -3,7 +3,6 @@ package autopilot;
 import Foundation.Utils;
 import VMath.VMath;
 import enums.OrbitElementKeys;
-import gui.ComputerAbstractButton;
 import orbits.NavComputer;
 import orbits.Planet;
 import orbits.keplerian.KeplerCalc;
@@ -27,7 +26,7 @@ public class CircularizeProgram extends AFCSTargetingStrategy {
   public void run() {
     super.run();
     referencedObject = computer.getReferenceObject();
-    ComputerAbstractButton button = null;
+    //ComputerAbstractButton button = null;
     eccThreshold = .00009 * EARTH_MASS / (((Planet) referencedObject).getMass());
 
     double[] bodyToObjectVec = VMath.vecSubtract(computer.getCraft().getCoordSys().getPositionVec(), computer.getReferenceObject().getCoordSys().getPositionVec());
