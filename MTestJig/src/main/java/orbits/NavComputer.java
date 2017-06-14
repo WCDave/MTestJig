@@ -90,6 +90,7 @@ public class NavComputer extends AbstractInstrument {
       put(Pattern.compile("[A]\\d{1,5}.?\\d*"), new ApogeeCommandHandler(NavComputer.this));
       put(Pattern.compile("[I]-?\\d{1,5}.?\\d*"), new PlaneChangeCommandHandler(NavComputer.this));
       put(Pattern.compile("[C]-?"), new CircularizeCommandHandler(NavComputer.this));
+      put(Pattern.compile("[M]"), new MoonCommandHandler(NavComputer.this));
     }};
 
     controlAdapter = aView.getControlAdapter();
@@ -519,7 +520,7 @@ public class NavComputer extends AbstractInstrument {
       for(Pattern p : targetingStrategyMap.keySet()) {
         Matcher m = p.matcher(string);
         if(m.find()) {
-          programSequence.add(targetingStrategyMap.get(p).handle(m));
+          programSequence.addAll(targetingStrategyMap.get(p).handle(m));
         }
       }
       //programSequence.add(new CircularizeProgram(this, new  CircularizationRaisePeriApsis(this)));

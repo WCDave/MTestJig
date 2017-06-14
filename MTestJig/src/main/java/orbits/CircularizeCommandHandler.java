@@ -6,11 +6,11 @@ import autopilot.CircularizationLowerApoApsis;
 import autopilot.CircularizationRaisePeriApsis;
 import autopilot.CircularizeProgram;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.regex.Matcher;
 
-/**
- * Created by dbutterw on 5/22/2017.
- */
+
 public class CircularizeCommandHandler implements ICommandHandler {
 
   private NavComputer computer;
@@ -20,7 +20,7 @@ public class CircularizeCommandHandler implements ICommandHandler {
   }
 
   @Override
-  public AFCSTargetingStrategy handle(Matcher m) {
+  public List<AFCSTargetingStrategy> handle(Matcher m) {
     AbstractCircularizationTarget target = null;
     if(m.group().contains("-")) {
       target = new CircularizationLowerApoApsis(computer);
@@ -28,6 +28,6 @@ public class CircularizeCommandHandler implements ICommandHandler {
     else {
       target =  new CircularizationRaisePeriApsis(computer);
     }
-    return new CircularizeProgram(computer, target);
+    return Arrays.asList(new CircularizeProgram(computer, target));
   }
 }

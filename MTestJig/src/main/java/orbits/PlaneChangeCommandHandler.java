@@ -3,6 +3,8 @@ package orbits;
 import autopilot.AFCSTargetingStrategy;
 import autopilot.PlanetPlaneChangePlaneAlignProgram;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.regex.Matcher;
 
 /**
@@ -16,12 +18,12 @@ public class PlaneChangeCommandHandler implements ICommandHandler {
     this.computer = computer;
   }
   @Override
-  public AFCSTargetingStrategy handle(Matcher m) {
+  public List<AFCSTargetingStrategy> handle(Matcher m) {
     String resultCommand = m.group().substring(1);
     float targetPlaneAngle = Float.parseFloat(resultCommand);
     CoordSys cs = (CoordSys) computer.getReferenceObject().getCoordSys().clone();
     cs.xRotate(targetPlaneAngle);
     PlanetPlaneChangePlaneAlignProgram planeChangeAlignProgram = new PlanetPlaneChangePlaneAlignProgram(computer, cs.zAxis().getVectorForm());
-    return planeChangeAlignProgram;
+    return Arrays.asList(planeChangeAlignProgram);
   }
 }
