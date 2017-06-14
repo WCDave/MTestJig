@@ -2,6 +2,7 @@ package orbits.keplerian;
 
 import VMath.VMath;
 import orbits.Abstract3DModelObject;
+import org.apache.commons.math3.util.FastMath;
 
 import java.util.concurrent.Callable;
 
@@ -10,7 +11,7 @@ public class KeplerCalc implements Callable<IOrbit> {
 
   private Abstract3DModelObject a3o;
   private static double mu = 3.98574405096e14;
-  private static double TWO_PI = Math.PI*2;
+  private static double TWO_PI = FastMath.PI*2;
   private boolean displayData;
 
   public KeplerCalc(Abstract3DModelObject a3o) {
@@ -39,10 +40,10 @@ public class KeplerCalc implements Callable<IOrbit> {
 
    double E = v*v/2 - mu/r;
    double a = -mu/(2*E);
-   double i = Math.acos(angMomentum[2] / VMath.mag(angMomentum));
-   double RAAN = Math.acos(node[0] / n);
-   double argp =  Math.acos(VMath.dotprod(node, eVec)/(n * e));
-   double TA = Math.acos(VMath.dotprod(eVec, rVec)/(e * r));
+   double i = FastMath.acos(angMomentum[2] / VMath.mag(angMomentum));
+   double RAAN = FastMath.acos(node[0] / n);
+   double argp =  FastMath.acos(VMath.dotprod(node, eVec)/(n * e));
+   double TA = FastMath.acos(VMath.dotprod(eVec, rVec)/(e * r));
 
    if(node[1] < 0) {
      RAAN = TWO_PI - RAAN;
@@ -56,7 +57,7 @@ public class KeplerCalc implements Callable<IOrbit> {
    KeplerianElements ke = new KeplerianElements(a, e, i, RAAN, argp, TA);
    IOrbit orbit = new Orbit(ke);
    if(displayData) {
-     System.out.println(a3o.getName()+": a="+a+", e="+e+", i="+Math.toDegrees(i)+", RAAN="+Math.toDegrees(RAAN)+", argP="+Math.toDegrees(argp)+", TA="+Math.toDegrees(TA));
+     System.out.println(a3o.getName()+": a="+a+", e="+e+", i="+FastMath.toDegrees(i)+", RAAN="+FastMath.toDegrees(RAAN)+", argP="+FastMath.toDegrees(argp)+", TA="+FastMath.toDegrees(TA));
    }
    return orbit;
   }

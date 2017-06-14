@@ -62,8 +62,8 @@ public class TLIProgram extends AFCSTargetingStrategy {
     }
     //dt.runThread = false;
 
-    log.info("TLI burn started*****" + Math.toDegrees(Math.acos(VMath.dotprod(VMath.normalize(moonToEarthVector), VMath.normalize(rocket.getPosition())))) + " degrees");
-    log.info("*********************" + Math.toDegrees(Math.acos(VMath.dotprod(rocket.getCoordSys().zAxis().getVectorForm(), VMath.normalize(moonToEarthVector)))) + " degrees");
+    log.info("TLI burn started*****" + FastMath.toDegrees(Math.acos(VMath.dotprod(VMath.normalize(moonToEarthVector), VMath.normalize(rocket.getPosition())))) + " degrees");
+    log.info("*********************" + FastMath.toDegrees(Math.acos(VMath.dotprod(rocket.getCoordSys().zAxis().getVectorForm(), VMath.normalize(moonToEarthVector)))) + " degrees");
     log.info("vs*******************" + VMath.dotprod(VMath.vecSubtract(moon.getVelocity(), rocket.getVelocity()), VMath.normalize(VMath.vecSubtract(moon.getPosition(), rocket.getPosition()))));
     log.info("DP*******************" + VMath.dotprod(rocket.getCoordSys().zAxis().getVectorForm(), VMath.normalize(VMath.vecSubtract(moon.getCoordSys().getPositionVec(), rocket.getCoordSys().getPositionVec()))));
     computer.getControlAdapter().setThrottle(80);
