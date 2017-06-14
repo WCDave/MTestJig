@@ -53,7 +53,7 @@ public class TLIProgram extends AFCSTargetingStrategy {
       mke = executorService.submit(new KeplerCalc(moon)).get().getKeplerianElements();
     }
     catch (Exception  e) {}
-    System.out.println("current position: "+(4 * Math.PI +(mke.getAop()+mke.getTa() - (rke.getAop()+rke.getTa()))) % (2 * Math.PI));
+    System.out.println("current position: "+Math.toDegrees(4 * Math.PI +(mke.getAop()+mke.getTa() - (rke.getAop()+rke.getTa()))) % (2 * Math.PI));
     //DebugThread dt = new DebugThread();
     //dt.start();
     while (!targetReached()) {
