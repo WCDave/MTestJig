@@ -11,6 +11,7 @@ import orbits.Planet;
 import orbits.World3DContainer;
 import orbits.keplerian.KeplerCalc;
 import orbits.keplerian.KeplerianElements;
+import org.apache.commons.math3.util.FastMath;
 import org.apache.log4j.Logger;
 
 public class TLIProgram extends AFCSTargetingStrategy {
@@ -53,7 +54,7 @@ public class TLIProgram extends AFCSTargetingStrategy {
       mke = executorService.submit(new KeplerCalc(moon)).get().getKeplerianElements();
     }
     catch (Exception  e) {}
-    System.out.println("current position: "+Math.toDegrees(4 * Math.PI +(mke.getAop()+mke.getTa() - (rke.getAop()+rke.getTa()))) % (2 * Math.PI));
+    System.out.println("current position: "+ FastMath.toDegrees(4 * Math.PI +(mke.getAop()+mke.getTa() - (rke.getAop()+rke.getTa()))) % (2 * Math.PI));
     //DebugThread dt = new DebugThread();
     //dt.start();
     while (!targetReached()) {
