@@ -7,6 +7,7 @@ import autopilot.CircularizationRaisePeriApsis;
 import autopilot.CircularizeProgram;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.regex.Matcher;
 
@@ -28,6 +29,6 @@ public class CircularizeCommandHandler implements ICommandHandler {
     else {
       target =  new CircularizationRaisePeriApsis(computer);
     }
-    return Arrays.asList(new CircularizeProgram(computer, target));
+    return Collections.singletonList(new CircularizeProgram(computer, target));
   }
 }

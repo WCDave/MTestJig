@@ -4,6 +4,7 @@ import autopilot.AFCSTargetingStrategy;
 import autopilot.GravityTurn;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.regex.Matcher;
 
@@ -19,6 +20,6 @@ public class ApogeeCommandHandler implements ICommandHandler {
   public List<AFCSTargetingStrategy> handle(Matcher m) {
     String resultCommand = m.group().substring(1);
     computer.setTargetAltitude(Float.parseFloat(resultCommand));
-    return Arrays.asList(new GravityTurn(computer));
+    return Collections.singletonList(new GravityTurn(computer));
   }
 }

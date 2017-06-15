@@ -4,6 +4,7 @@ import autopilot.AFCSTargetingStrategy;
 import autopilot.PlanetPlaneChangePlaneAlignProgram;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.regex.Matcher;
 
@@ -24,6 +25,6 @@ public class PlaneChangeCommandHandler implements ICommandHandler {
     CoordSys cs = (CoordSys) computer.getReferenceObject().getCoordSys().clone();
     cs.xRotate(targetPlaneAngle);
     PlanetPlaneChangePlaneAlignProgram planeChangeAlignProgram = new PlanetPlaneChangePlaneAlignProgram(computer, cs.zAxis().getVectorForm());
-    return Arrays.asList(planeChangeAlignProgram);
+    return Collections.singletonList(planeChangeAlignProgram);
   }
 }
