@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
 
-public class MoonCommandHandler implements ICommandHandler {
+public class MoonCommandHandler implements ICommandHandler<Matcher, AFCSTargetingStrategy> {
 
   private NavComputer computer;
 

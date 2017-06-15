@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 
 
-public class ApogeeCommandHandler implements ICommandHandler {
+public class ApogeeCommandHandler implements ICommandHandler<Matcher, AFCSTargetingStrategy> {
   private NavComputer computer;
 
   public ApogeeCommandHandler(NavComputer computer) {

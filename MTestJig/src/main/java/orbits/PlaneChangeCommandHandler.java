@@ -11,7 +11,7 @@ import java.util.regex.Matcher;
 /**
  * Created by dbutterw on 5/22/2017.
  */
-public class PlaneChangeCommandHandler implements ICommandHandler {
+public class PlaneChangeCommandHandler implements ICommandHandler<Matcher, AFCSTargetingStrategy> {
 
   private NavComputer computer;
 

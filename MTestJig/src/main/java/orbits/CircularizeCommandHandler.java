@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 
 
-public class CircularizeCommandHandler implements ICommandHandler {
+public class CircularizeCommandHandler implements ICommandHandler<Matcher, AFCSTargetingStrategy> {
 
   private NavComputer computer;
 
