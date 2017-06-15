@@ -1,9 +1,7 @@
 package orbits;
 
 
-import autopilot.AFCSTargetingStrategy;
-import autopilot.MoonOrbitPlaneAlignProgram;
-import autopilot.TLIProgram;
+import autopilot.*;
 
 import java.util.Arrays;
 import java.util.List;
@@ -18,7 +16,8 @@ public class MoonCommandHandler implements ICommandHandler<Matcher, AFCSTargetin
   }
   @Override
   public List<AFCSTargetingStrategy> handle(Matcher m) {
-    return Arrays.asList(new MoonOrbitPlaneAlignProgram(computer), new TLIProgram(computer));
-
+    return Arrays.asList(new MoonOrbitPlaneAlignProgram(computer), new TLIProgram(computer),
+            new CourseCorrectionManeuverProgram(computer, (Planet) World3DContainer.getInstance().getItem("Moon"), 80d),
+            new CircularizeProgram(computer, new CircularizationLowerApoApsis(computer)));
   }
 }
