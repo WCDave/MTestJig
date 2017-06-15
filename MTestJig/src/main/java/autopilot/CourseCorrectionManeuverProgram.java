@@ -1,17 +1,14 @@
 package autopilot;
 
+import Foundation.Utils;
+import VMath.VMath;
 import enums.OrbitElementKeys;
 import orbits.IOrbitPlaneChangeTransformer;
 import orbits.NavComputer;
-import orbits.OrbitToOrbitChangeTransformer;
 import orbits.Planet;
-
 import orbits.keplerian.KeplerCalc;
 import org.apache.commons.math3.util.FastMath;
 import org.apache.log4j.Logger;
-
-import Foundation.Utils;
-import VMath.VMath;
 
 public class CourseCorrectionManeuverProgram extends AFCSTargetingStrategy {
 
@@ -39,12 +36,12 @@ public class CourseCorrectionManeuverProgram extends AFCSTargetingStrategy {
 
     log.info("awaiting CCM distance " + 240000 * NavComputer.METERS_PER_MILE + "@ " + VMath.mag((double[]) computer.getRocketOrbitElements().get(OrbitElementKeys.radiusVec)));
 
-    executorService.submit(new KeplerCalc(rocket));
-    executorService.submit(new KeplerCalc(planet));
+    executorService.submit(new KeplerCalc(rocket, true));
+    executorService.submit(new KeplerCalc(planet, true));
     Utils.sleep(1800000);
     makePlaneAdjustment();
-    executorService.submit(new KeplerCalc(rocket));
-    executorService.submit(new KeplerCalc(planet));
+    executorService.submit(new KeplerCalc(rocket, true));
+    executorService.submit(new KeplerCalc(planet, true));
 
     log.info("plane Adjustment completed...waiting for TLI adjustment " + tliAdjustmentStart + ", " + VMath.mag((double[]) computer.getRocketOrbitElements().get(OrbitElementKeys.radiusVec)) / NavComputer.METERS_PER_MILE);
 
