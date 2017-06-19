@@ -49,4 +49,7 @@ public class ViewChaseCraft extends Craft {
     getCoordSys().setZAxis(tempSys.zAxis().getVectorForm());
 
   }
+
+  @Override
+  public void draw(AbstractView view) {  }
 }
