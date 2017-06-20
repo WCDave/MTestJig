@@ -2,6 +2,8 @@ package main;
 
 import VMath.VMath;
 import enums.ViewTypes;
+import main.externalView.keyResponder.ExternalSlewKeyResponder;
+import main.externalView.keyResponder.IKeyResponder;
 import main.externalView.mouse.ExternalViewMouseInputListener;
 import main.externalView.positioning.ExternalViewPositioner;
 import orbits.CoordSys;
@@ -9,6 +11,8 @@ import orbits.CoordSys;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.HashMap;
+import java.util.Map;
 
 
 /**
@@ -41,6 +45,8 @@ public class ExternalView extends AbstractView implements KeyListener {
   private boolean viewLock = true;
   private int planetSelector = 0;
 
+  private Map<ViewTypes, IKeyResponder<KeyEvent>> keyResponderMap;
+
   private Dimension EXT_VIEW_SIZE_DIM = new Dimension(MainApp.APP_SIZE_DIM.width-30, MainApp.APP_SIZE_DIM.height-70);
 
   private CoordSys initialCoordSys;
@@ -52,6 +58,9 @@ public class ExternalView extends AbstractView implements KeyListener {
       setCraft(mainCraft);
     }
     initGUI();
+    keyResponderMap = new HashMap<ViewTypes, IKeyResponder<KeyEvent>>(){{
+      put(ViewTypes.SLEW, new ExternalSlewKeyResponder(ExternalView.this));
+    }};
   }
 
   private void initGUI() {
@@ -84,6 +93,10 @@ public class ExternalView extends AbstractView implements KeyListener {
 
   public CoordSys getCoordSys() {
     return viewingCoordSys;
+  }
+
+  public CoordSys getInitialCoordSys() {
+    return initialCoordSys;
   }
 
   @Override
@@ -129,98 +142,104 @@ public class ExternalView extends AbstractView implements KeyListener {
   }
 
   public void keyPressed(KeyEvent evt) {
-    if ((viewType == ViewTypes.SLEW || viewType == ViewTypes.ROCKET || viewType == ViewTypes.GEOSYNCH)) {
-      switch (evt.getKeyCode()) {
-        case KeyEvent.VK_NUMPAD2:
-          viewingCoordSys.xRotate((float) rateInc);
+    IKeyResponder<KeyEvent> responder = keyResponderMap.get(ViewTypes.SLEW);
+    if (responder != null) {
+      responder.respond(evt);
+    }
+    else {
+      if (viewType == ViewTypes.ROCKET || viewType == ViewTypes.GEOSYNCH) {
+        switch (evt.getKeyCode()) {
+          case KeyEvent.VK_NUMPAD2:
+            viewingCoordSys.xRotate((float) rateInc);
+            break;
+          case KeyEvent.VK_NUMPAD8:
+            viewingCoordSys.xRotate((float) -rateInc);
+            break;
+          case KeyEvent.VK_NUMPAD4:
+            viewingCoordSys.zRotate((float) rateInc);
+            break;
+          case KeyEvent.VK_NUMPAD6:
+            viewingCoordSys.zRotate((float) -rateInc);
+            break;
+          case KeyEvent.VK_NUMPAD1:
+            viewingCoordSys.yRotate((float) -rateInc);
+            break;
+          case KeyEvent.VK_NUMPAD3:
+            viewingCoordSys.yRotate((float) rateInc);
+            break;
+          case KeyEvent.VK_EQUALS:
+            spd = evt.isShiftDown() ? (float) 0.0000001 * AUtoMeters : (float) 0.000001 * AUtoMeters;
+            break;
+          case KeyEvent.VK_MINUS:
+            spd = evt.isShiftDown() ? (float) -0.0000001 * AUtoMeters : (float) -0.000001 * AUtoMeters;
+            break;
+          case KeyEvent.VK_SPACE: {
+            velVec[0] = 0;
+            velVec[1] = 0;
+            velVec[2] = 0;
+            spd = 0;
+          }
+          ;
           break;
-        case KeyEvent.VK_NUMPAD8:
-          viewingCoordSys.xRotate((float) -rateInc);
-          break;
-        case KeyEvent.VK_NUMPAD4:
-          viewingCoordSys.zRotate((float) rateInc);
-          break;
-        case KeyEvent.VK_NUMPAD6:
-          viewingCoordSys.zRotate((float) -rateInc);
-          break;
-        case KeyEvent.VK_NUMPAD1:
-          viewingCoordSys.yRotate((float) -rateInc);
-          break;
-        case KeyEvent.VK_NUMPAD3:
-          viewingCoordSys.yRotate((float) rateInc);
-          break;
-        case KeyEvent.VK_EQUALS:
-          spd = evt.isShiftDown() ? (float) 0.0000001 * AUtoMeters : (float) 0.000001 * AUtoMeters ;
-          break;
-        case KeyEvent.VK_MINUS:
-          spd = evt.isShiftDown() ? (float) -0.0000001 * AUtoMeters : (float) -0.000001 * AUtoMeters ;
-          break;
-        case KeyEvent.VK_SPACE: {
-          velVec[0] = 0;
-          velVec[1] = 0;
-          velVec[2] = 0;
+          case KeyEvent.VK_SEMICOLON:
+            viewingCoordSys = (CoordSys) initialCoordSys.clone();
+            break;
+          case KeyEvent.VK_0:
+            planetSelector = -1;
+            new ExternalViewPositioner("Test1", viewingCoordSys, "mud").postionViewingSys();
+            break;
+          case KeyEvent.VK_1:
+            planetSelector = 2;
+            new ExternalViewPositioner(2, viewingCoordSys).postionViewingSys();
+            break;
+          case KeyEvent.VK_2:
+            planetSelector = 3;
+            new ExternalViewPositioner(3, viewingCoordSys).postionViewingSys();
+            break;
+          case KeyEvent.VK_3:
+            planetSelector = 0;
+            new ExternalViewPositioner(0, viewingCoordSys).postionViewingSys();
+            break;
+          case KeyEvent.VK_4:
+            planetSelector = 4;
+            new ExternalViewPositioner(4, viewingCoordSys).postionViewingSys();
+            break;
+          case KeyEvent.VK_5:
+            planetSelector = 5;
+            new ExternalViewPositioner(5, viewingCoordSys).postionViewingSys();
+            break;
+          case KeyEvent.VK_6:
+            planetSelector = 6;
+            new ExternalViewPositioner(6, viewingCoordSys).postionViewingSys();
+            break;
+          case KeyEvent.VK_7:
+            planetSelector = 7;
+            new ExternalViewPositioner(7, viewingCoordSys).postionViewingSys();
+            break;
+          case KeyEvent.VK_8:
+            planetSelector = 8;
+            new ExternalViewPositioner(8, viewingCoordSys).postionViewingSys();
+            break;
+          case KeyEvent.VK_9:
+            planetSelector = 9;
+            new ExternalViewPositioner(9, viewingCoordSys).postionViewingSys();
+            break;
+          case KeyEvent.VK_M:
+            planetSelector = -1;
+            new ExternalViewPositioner("Moon", viewingCoordSys, "Earth").postionViewingSys();
+            break;
+
+          case KeyEvent.VK_SLASH:
+            viewLock = !viewLock;
+            break;
+
+        }
+        if (spd != 0) {
+          velVec = VMath.vecMultByScalar(viewingCoordSys.zAxis().getVectorForm(), spd);
+          double[] tempVec = VMath.vecAdd(viewingCoordSys.getPositionVec(), velVec);
+          viewingCoordSys.setPositionAsVec(tempVec);
           spd = 0;
         }
-        ;
-        break;
-        case KeyEvent.VK_SEMICOLON:
-          viewingCoordSys = (CoordSys) initialCoordSys.clone();
-          break;
-        case KeyEvent.VK_0:
-          planetSelector = -1;
-          new ExternalViewPositioner("Test1", viewingCoordSys, "mud").postionViewingSys();
-          break;
-        case KeyEvent.VK_1:
-          planetSelector = 2;
-          new ExternalViewPositioner(2, viewingCoordSys).postionViewingSys();
-          break;
-        case KeyEvent.VK_2:
-          planetSelector = 3;
-          new ExternalViewPositioner(3, viewingCoordSys).postionViewingSys();
-          break;
-        case KeyEvent.VK_3:
-          planetSelector = 0;
-          new ExternalViewPositioner(0, viewingCoordSys).postionViewingSys();
-          break;
-        case KeyEvent.VK_4:
-          planetSelector = 4;
-          new ExternalViewPositioner(4, viewingCoordSys).postionViewingSys();
-          break;
-        case KeyEvent.VK_5:
-          planetSelector = 5;
-          new ExternalViewPositioner(5, viewingCoordSys).postionViewingSys();
-          break;
-        case KeyEvent.VK_6:
-          planetSelector = 6;
-          new ExternalViewPositioner(6, viewingCoordSys).postionViewingSys();
-          break;
-        case KeyEvent.VK_7:
-          planetSelector = 7;
-          new ExternalViewPositioner(7, viewingCoordSys).postionViewingSys();
-          break;
-        case KeyEvent.VK_8:
-          planetSelector = 8;
-          new ExternalViewPositioner(8, viewingCoordSys).postionViewingSys();
-          break;
-        case KeyEvent.VK_9:
-          planetSelector = 9;
-          new ExternalViewPositioner(9, viewingCoordSys).postionViewingSys();
-          break;
-        case KeyEvent.VK_M:
-          planetSelector = -1;
-          new ExternalViewPositioner("Moon", viewingCoordSys, "Earth").postionViewingSys();
-          break;
-
-        case KeyEvent.VK_SLASH:
-          viewLock = !viewLock;
-          break;
-
-      }
-      if (spd != 0) {
-        velVec = VMath.vecMultByScalar(viewingCoordSys.zAxis().getVectorForm(), spd);
-        double[] tempVec = VMath.vecAdd(viewingCoordSys.getPositionVec(), velVec);
-        viewingCoordSys.setPositionAsVec(tempVec);
-        spd = 0;
       }
     }
   }
