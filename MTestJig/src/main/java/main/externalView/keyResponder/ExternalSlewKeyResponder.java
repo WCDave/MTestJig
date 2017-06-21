@@ -22,7 +22,7 @@ public class ExternalSlewKeyResponder implements IKeyResponder<KeyEvent> {
     this.view = view;
   }
   @Override
-  public void respond(KeyEvent keyEvent) {
+  public void respondToKeyPressed(KeyEvent keyEvent) {
 
     switch (keyEvent.getKeyCode()) {
       case KeyEvent.VK_NUMPAD2:
@@ -105,5 +105,10 @@ public class ExternalSlewKeyResponder implements IKeyResponder<KeyEvent> {
       view.getCoordSys().setPositionAsVec(tempVec);
       spd = 0;
     }
+  }
+
+  @Override
+  public void respondToKeyReleased(KeyEvent keyEvent) {
+
   }
 }

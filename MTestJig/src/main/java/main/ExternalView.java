@@ -1,11 +1,9 @@
 package main;
 
-import VMath.VMath;
 import enums.ViewTypes;
 import main.externalView.keyResponder.ExternalSlewKeyResponder;
 import main.externalView.keyResponder.IKeyResponder;
 import main.externalView.mouse.ExternalViewMouseInputListener;
-import main.externalView.positioning.ExternalViewPositioner;
 import orbits.CoordSys;
 
 import java.awt.*;
@@ -121,35 +119,23 @@ public class ExternalView extends AbstractView implements KeyListener {
     return viewType;
   }
 
-  /**
-   * This method should return an instance of this class which does
-   * NOT initialize it's GUI elements. This method is ONLY required by
-   * Jigloo if the superclass of this class is abstract or non-public. It
-   * is not needed in any other situation.
-   */
-  public static Object getGUIBuilderInstance() {
-    return new ExternalView(Boolean.FALSE);
-  }
-
-  /**
-   * This constructor is used by the getGUIBuilderInstance method to
-   * provide an instance of this class which has not had it's GUI elements
-   * initialized (ie, initGUI is not called in this constructor).
-   */
-  public ExternalView(Boolean initGUI) {
-    super();
-  }
 
   public void keyTyped(KeyEvent e) {
   }
 
   public void keyPressed(KeyEvent evt) {
     IKeyResponder<KeyEvent> responder = keyResponderMap.get(viewType);
+<<<<<<< HEAD
     responder.respond(evt);
+=======
+    responder.respondToKeyPressed(evt);
+>>>>>>> 8bc188682f6abdf5cfbe30a7ebc0d7a92f62b374
   }
 
 
   public void keyReleased(KeyEvent e) {
+    IKeyResponder<KeyEvent> responder = keyResponderMap.get(viewType);
+    responder.respondToKeyReleased(e);
   }
 
 

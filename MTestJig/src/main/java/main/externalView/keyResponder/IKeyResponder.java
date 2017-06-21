@@ -3,5 +3,7 @@ package main.externalView.keyResponder;
 
 public interface IKeyResponder<T> {
 
-  void respond(T t);
+  void respondToKeyPressed(T t);
+
+  void respondToKeyReleased(T t);
 }
