@@ -142,7 +142,7 @@ public class ExternalView extends AbstractView implements KeyListener {
   }
 
   public void keyPressed(KeyEvent evt) {
-    IKeyResponder<KeyEvent> responder = keyResponderMap.get(ViewTypes.SLEW);
+    IKeyResponder<KeyEvent> responder = keyResponderMap.get(viewType);
     responder.respond(evt);
   }
 
