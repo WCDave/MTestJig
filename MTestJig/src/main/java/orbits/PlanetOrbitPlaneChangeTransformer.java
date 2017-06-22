@@ -19,7 +19,7 @@ public class PlanetOrbitPlaneChangeTransformer implements IOrbitPlaneChangeTrans
   }
 
   @Override
-  public void computeOrbit() {
+  public void computeOrbitNormal() {
     this.sourceVec = IOrbitPlaneChangeTransformer.computeOrbitalNormal(orbitingObject, computer.getReferenceObject().getCoordSys());
   }
 

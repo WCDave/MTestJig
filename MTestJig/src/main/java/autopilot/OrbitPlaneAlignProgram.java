@@ -73,7 +73,7 @@ public abstract class OrbitPlaneAlignProgram extends AFCSTargetingStrategy {
     super.run();
     computer.setAnnunMsg("Plane Align");
 
-    transformer.computeOrbit();
+    transformer.computeOrbitNormal();
     log.info("Waiting for Ascending or Descending node for plane change burn");
     while (!targetReached()) {
       Utils.sleep(40);
@@ -83,7 +83,7 @@ public abstract class OrbitPlaneAlignProgram extends AFCSTargetingStrategy {
       } else {
         computer.getControlAdapter().setThrottle(0);
       }
-      transformer.computeOrbit();
+      transformer.computeOrbitNormal();
     }
     computer.getControlAdapter().setThrottle(0);
     button.setSelected(false);

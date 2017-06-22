@@ -7,7 +7,7 @@ import VMath.VMath;
  * Created by DaveMain on 3/18/2017.
  */
 public interface IOrbitPlaneChangeTransformer {
-  void computeOrbit();
+  void computeOrbitNormal();
 
   double[] getNodeVector();
 

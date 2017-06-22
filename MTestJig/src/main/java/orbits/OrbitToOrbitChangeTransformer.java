@@ -1,7 +1,6 @@
 package orbits;
 
-import Foundation.Utils;
-import VMath.*;
+import VMath.VMath;
 
 public class OrbitToOrbitChangeTransformer implements IOrbitPlaneChangeTransformer {
 
@@ -23,7 +22,7 @@ public class OrbitToOrbitChangeTransformer implements IOrbitPlaneChangeTransform
    * computes normal vectors for the planes of both the target orbit and source orbit
    */
   @Override
-  public void computeOrbit() {
+  public void computeOrbitNormal() {
     OrbitToOrbitChangeTransformer.this.sourceVec = IOrbitPlaneChangeTransformer.computeOrbitalNormal(source, computer.getReferenceObject().getCoordSys());
 
     if (targetVec == null) {
