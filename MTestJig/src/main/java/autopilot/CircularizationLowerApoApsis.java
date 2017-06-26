@@ -44,7 +44,7 @@ public class CircularizationLowerApoApsis extends AbstractCircularizationTarget 
     //return Math.abs(radius - periApsis) < VMath.mag(cs.getVelocityAsVec()) * .0002236f;
     boolean result = false;
 
-    if(FastMath.abs(radius - periApsis) < FastMath.abs(deltaV)/1900) {
+    if(FastMath.abs(radius - periApsis) < FastMath.abs(deltaV)/1850) {
       targetCounter++;
       result = targetCounter > 3;
     }

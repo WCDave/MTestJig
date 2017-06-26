@@ -73,7 +73,7 @@ public abstract class AbstractView<T extends Abstract3DModelObject> extends JPan
     //System.out.println(drawableList.size());
 
     drawableList.sort();
-    for (int i = 0; i < drawableList.size(); i++) {
+    for (int i = drawableList.size()/6; i < drawableList.size(); i++) {
       drawableList.get(i).draw(this);
     }
 

@@ -95,6 +95,8 @@ public class CockPitView extends AbstractView implements Instrumented<AbstractIn
 
   private CountDownLatch countDownLatch;
 
+  private int maxDetailLevel;
+
   private static Dimension COCKPIT_VIEW_SIZE_DIM = new Dimension(MainApp.APP_SIZE_DIM.width-25, MainApp.APP_SIZE_DIM.height-320);
 
 
@@ -104,6 +106,7 @@ public class CockPitView extends AbstractView implements Instrumented<AbstractIn
     super();
     drawingVisitor = new DrawingVisitor();
     this.countDownLatch = countDownLatch;
+    maxDetailLevel = Math.min(Runtime.getRuntime().availableProcessors()+8,11);
     //initGUI();
   }
 
@@ -689,7 +692,7 @@ public class CockPitView extends AbstractView implements Instrumented<AbstractIn
 
   @Override
   public int getDetailLevel() {
-    return theRocket.getNorm()[0] == 0 ?11:13;
+    return theRocket.getNorm()[0] == 0 ?maxDetailLevel:13;
   }
 
 

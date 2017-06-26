@@ -23,7 +23,7 @@ public class ECU {
   public ECU(RocketEngine engine, int delayInMilliseconds) {
     this.engine = engine;
     this.delayInMilliseconds = delayInMilliseconds;
-    delayDueToNumberOfProcessors = Runtime.getRuntime().availableProcessors() > 2 ? 4 : (4-Runtime.getRuntime().availableProcessors()) * 100;
+    delayDueToNumberOfProcessors = Runtime.getRuntime().availableProcessors() > 2 ? 4 : (4-Runtime.getRuntime().availableProcessors()) * 1000;
     //if() {
       particleThread.start();
     //}
