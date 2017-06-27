@@ -62,7 +62,7 @@ public abstract class AbstractView<T extends Abstract3DModelObject> extends JPan
     }
     //System.out.println("dt= "+(System.nanoTime() - t0));
 
-    if(drawableList.size() < 100) Utils.sleep(4);
+    //if(drawableList.size() < 100) Utils.sleep(4);
     World3DContainer.getInstance().getBackground().draw(this);
     //Utils.sleep(0, 1000);
 
@@ -73,7 +73,7 @@ public abstract class AbstractView<T extends Abstract3DModelObject> extends JPan
     //System.out.println(drawableList.size());
 
     drawableList.sort();
-    for (int i = drawableList.size()/6; i < drawableList.size(); i++) {
+    for (int i = 0; i < drawableList.size(); i++) {
       drawableList.get(i).draw(this);
     }
 
