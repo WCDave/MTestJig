@@ -51,11 +51,8 @@ public abstract class AFCSOnOrbitStrategy extends AFCSStrategy {
         rotSign = FastMath.signum(VMath.dotprod(xAxis.getVectorForm(), yTarget));
         cs.zRotate(dThetaMultiple * rotSign * (e2 + .05));
       } while (currentThread == blinkerThread && (e2 > Command.alignError || e1 > e1Tolerance));
-<<<<<<< HEAD
-      Utils.sleep(40);
-=======
+
       Utils.sleep(5);
->>>>>>> 9bb74bf68e66f7c93c547e2c4b7b26d51889c8ff
 
       computer.setFlashAnnun(false);
     }
