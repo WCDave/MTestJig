@@ -44,7 +44,7 @@ public class GravityTurn extends AFCSTargetingStrategy {
     Utils.sleep(4000);
     c.nullRates();
     ((GravityTurnThrustOnlyCorridorControl)corridorControl).setBaselineThrustValue(computer.getControlAdapter().getThrottleSetting());
-    t.start();
+    //t.start();
 //    double pitchValue = VMath.dotprod(cs.zAxis().getVectorForm(), VMath.normalize(VMath.vecSubtract(cs.getPositionVec(), referencedObject.getCoordSys().getPositionVec())));
 //    System.out.println(pitchValue);
     //computer.getControlAdapter().rampThrust(60, ControlInputSource.COMPUTER);
