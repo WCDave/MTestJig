@@ -5,6 +5,7 @@ import VMath.VMath;
 import main.Command;
 import orbits.CoordSys;
 import orbits.NavComputer;
+import orbits.UVector;
 import org.apache.commons.math3.util.FastMath;
 
 import java.util.List;
@@ -27,7 +28,9 @@ public abstract class AFCSOnOrbitStrategy extends AFCSStrategy {
     double rotSign;
     computer.setFlashAnnun(true);
     computer.getCraft().nullRates();
-
+    UVector zAxis = cs.zAxis();
+    UVector xAxis = cs.xAxis();
+    double dThetaMultiple = 2.5 * dTheta;
 
     Thread currentThread = Thread.currentThread();
     while (currentThread == blinkerThread) {
@@ -38,17 +41,17 @@ public abstract class AFCSOnOrbitStrategy extends AFCSStrategy {
           yTarget = targetList.get(1);
           xTarget = targetList.get(0);
 
-          double[] arbAxis = VMath.normalize(VMath.crossprd(cs.zAxis().getVectorForm(), zTarget));
-          e1 = 1 - VMath.dotprod(cs.zAxis().getVectorForm(), zTarget);
-          rotSign = -FastMath.signum(VMath.dotprod(VMath.crossprd(cs.zAxis().getVectorForm(), zTarget), arbAxis));
+          double[] arbAxis = VMath.normalize(VMath.crossprd(zAxis.getVectorForm(), zTarget));
+          e1 = 1 - VMath.dotprod(zAxis.getVectorForm(), zTarget);
+          rotSign = -FastMath.signum(VMath.dotprod(VMath.crossprd(zAxis.getVectorForm(), zTarget), arbAxis));
           cs.rotateAroundArbitraryAxis(arbAxis, dTheta * rotSign * (2 * e1 + .05));
         } while (e1 > e1Tolerance && currentThread == blinkerThread);
 
-        e2 = 1 - VMath.dotprod(cs.xAxis().getVectorForm(), xTarget);
-        rotSign = FastMath.signum(VMath.dotprod(cs.xAxis().getVectorForm(), yTarget));
-        cs.zRotate(2.5 * dTheta * rotSign * (e2 + .05));
+        e2 = 1 - VMath.dotprod(xAxis.getVectorForm(), xTarget);
+        rotSign = FastMath.signum(VMath.dotprod(xAxis.getVectorForm(), yTarget));
+        cs.zRotate(dThetaMultiple * rotSign * (e2 + .05));
       } while (currentThread == blinkerThread && (e2 > Command.alignError || e1 > e1Tolerance));
-      Utils.sleep(20);
+      Utils.sleep(5);
 
       computer.setFlashAnnun(false);
     }
