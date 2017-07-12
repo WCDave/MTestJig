@@ -427,14 +427,8 @@ public class NavComputer extends AbstractInstrument {
     Abstract3DModelObject[] array = wc.getItemsAsArray();
     Map<String, Object> locMap = new HashMap<String, Object>();
 
-    for (Abstract3DModelObject obj : array) {
-
-      if (obj instanceof Planet && ((Planet) obj).getName().equals("Moon")) {
-        Planet p = (Planet) obj;
-        locMap.put(p.getName(), p.getCoordSys().getPositionVec());
-        break;
-      }
-    }
+    Planet p = (Planet) wc.getItem("Moon");
+    locMap.put(p.getName(), p.getCoordSys().getPositionVec());     
 
     resultMap.put(OrbitElementKeys.locMap, locMap);
 
