@@ -8,6 +8,7 @@ import main.Shadeable;
 import orbits.Facet;
 import orbits.Planet;
 import orbits.Sphere;
+import threeD.DefaultColorModel3D;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -29,13 +30,13 @@ public class AtmosphereShell extends Planet implements Shadeable {
 
   private  AtmosphereShell(BufferedImage image, Dimension faceSize) {
     super(image);
-    this.buildFactor = 0;
+    this.buildFactor = 1280;
+    this.colorModel = ColorModel.DEFAULT_COLOR_MODEL;
   }
 
   @Override
   public void set3DObjectForDraw(AbstractView view) {
-    //super.set3DObjectForDraw(view);
-
+    super.set3DObjectForDraw(view);
     synchronized (this.getFaceList()) {
       for(Facet face : this.getFaceList()) {
         face.setVectorFromView(VMath.vecAdd(view.getObjectVectorFromView(), face.mv()));
@@ -63,11 +64,23 @@ public class AtmosphereShell extends Planet implements Shadeable {
 
   @Override
   public ColorModel getColorModel() {
-    return null;
+    return this.colorModel;
   }
 
   @Override
   public Color getColor() {
     return planet.getColor();
+  }
+
+  @Override
+  public void rebuild(int factor) {
+    if (factor != buildFactor) {
+//      buildFactor = factor;
+      synchronized (faceList) {
+        this.getDetailer().flushCache();
+        faceList.clear();
+        buildSphere(this);
+      }
+    }
   }
 }

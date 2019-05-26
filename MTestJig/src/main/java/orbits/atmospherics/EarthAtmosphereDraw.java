@@ -30,6 +30,8 @@ public class EarthAtmosphereDraw implements IAtmosphereDraw {
   public EarthAtmosphereDraw(Planet p) {
     earth = p;
     atmosphereShell = new AtmosphereShell(p, 1.02f);
+    atmosphereShell.setName("atmo");
+    atmosphereShell.setDetailingFactor(5e5);
     atmosphereShell.setShadingVisitor(new DrawingVisitor() {
       @Override
       public Color visit(Facet f) {

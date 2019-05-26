@@ -41,7 +41,7 @@ public class DrawingVisitor implements IDrawingVisitor<Facet> {
     sunAngleFactor = sunAngleFactor < 0 ? 1 : sunAngleFactor;
     double dotProdWithView = VMath.dotprod(view.getCoordSys().getViewAxis(), VMath.normalize(facet.mv()));
     double distanceOfFacetFromView = VMath.mag(facet.getVectorFromView());
-    int alpha = FastMath.min((int)(230 * (1-sunAngleFactor)*(1 - FastMath.exp(-distanceOfFacetFromView/1e7))), 255);
+    int alpha = FastMath.min((int)(255 * (1-sunAngleFactor)*(1 - FastMath.exp(-distanceOfFacetFromView/5e6))), 255);
     //if(alpha < 255) {
       //System.out.println("SA=" + sunAngleFactor +", Alpha="+alpha+", distFromViewFactorExp="+Math.exp(-distanceOfFacetFromView/1e7)+", distFromView="+distanceOfFacetFromView);
     //}

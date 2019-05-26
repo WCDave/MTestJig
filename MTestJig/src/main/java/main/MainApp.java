@@ -21,6 +21,7 @@ import orbits.Sphere;
 import orbits.StarBackground;
 import orbits.World3DContainer;
 import orbits.atmospherics.EarthAtmosFactor2;
+import orbits.atmospherics.EarthAtmosphereDraw;
 import orbits.atmospherics.SunAtmosphereDraw;
 import orbits.movement.MoonOrbitMovement;
 import orbits.movement.Moveable;
@@ -46,12 +47,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.sql.Connection;
-import java.util.ArrayList;
-import java.util.Enumeration;
-import java.util.HashMap;
-import java.util.Hashtable;
+import java.util.*;
 import java.util.List;
-import java.util.Vector;
 import java.util.concurrent.CountDownLatch;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -108,6 +105,36 @@ public class MainApp extends JFrame {
 //		{
 //			map.put(new Integer(i).toString(), new int[3]);
 //		}
+
+//    class Solution {
+//      public int solution(int[] A) {
+      int[] A =new int[]{-1,-2,-3,2,101,102,103};
+      // [-3,-2,-1,1,3]
+
+        Arrays.sort(A);
+        int max = A[A.length-1];
+        int result =-1;
+        max = max ==1?2:max;
+        if(A.length==1){
+          result = A[0]==1?2:1;
+        }
+        else if(A.length>1)  {
+          for(int i= 0;i<A.length-1 && result ==-1;i++){
+            if( i+1 < A.length && A[i+1]-A[i]>1  ){
+              result = A[i]+1;
+            }
+          }
+
+        }
+    result = result == max ?max:result;
+        System.out.println(result);
+
+       
+//      }
+//    }
+
+    Long[] longs = new Long[]{1L,2L,3L, 3L};
+    new HashSet<Long>(Arrays.asList(longs)).toArray(longs);
 
 
     Integer.valueOf("#a5bee7".substring(1, 3), 16);
@@ -326,7 +353,7 @@ public class MainApp extends JFrame {
     ((Planet) anArray[2]).setShadingVisitor(v);
     ((Planet) anArray[4]).setShadingVisitor(v);
     ((Planet) anArray[0]).setAtmosDraw(new SunAtmosphereDraw((Planet) anArray[0]));
-   //((Planet) anArray[2]).setAtmosDraw(new EarthAtmosphereDraw((Planet) anArray[2]));
+   ((Planet) anArray[2]).setAtmosDraw(new EarthAtmosphereDraw((Planet) anArray[2]));
     ((Planet) anArray[2]).setAtmosFactor(new EarthAtmosFactor2((Planet) anArray[2]));
 
     anArray[1].setDetailingFactor(.32 * (5e5));
