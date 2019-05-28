@@ -16,7 +16,7 @@ import org.apache.activemq.ActiveMQConnectionFactory;
 
 public class RocketConsole implements MessageListener {
 
-  private String url = "tcp://daveaux:61616";
+  private String url = "tcp://Dave-PC:61616";
   private Connection connection;
   private MessageProducer producer;
   private Session session;

@@ -181,9 +181,9 @@ public class Facet extends Abstract3DModelObject implements Visitable {
         //synchronized (g2 ){
         g2.setPaint(shadedColor);
         g2.fill(aGp);
-//        if (drawFaceOutlines) {
-//          g2.setColor(shadedColor);
-//        }
+        if (drawFaceOutlines) {
+          g2.setColor(Color.BLACK);
+        }
         //if(!paintBothSides) {
         if(shadedColor != null && shadedColor.getAlpha() == 255) {
           g2.draw(aGp);

@@ -38,12 +38,18 @@ public class AtmosphereShell extends Planet implements Shadeable {
   public void set3DObjectForDraw(AbstractView view) {
     super.set3DObjectForDraw(view);
     synchronized (this.getFaceList()) {
-      for(Facet face : this.getFaceList()) {
+      this.getFaceList().stream().forEach(face-> {
         face.setVectorFromView(VMath.vecAdd(view.getObjectVectorFromView(), face.mv()));
         getShadingVisitor().visit(face, view);
         //face.setColor(Color.RED);
         view.getDrawableList().add(face);
-      }
+      });
+//      for(Facet face : this.getFaceList()) {
+//        face.setVectorFromView(VMath.vecAdd(view.getObjectVectorFromView(), face.mv()));
+//        getShadingVisitor().visit(face, view);
+//        //face.setColor(Color.RED);
+//        view.getDrawableList().add(face);
+//      }
     }
   }
 

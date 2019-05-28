@@ -22,6 +22,7 @@ public class PlaneChangeCommandHandler implements ICommandHandler<Matcher, AFCST
   public List<AFCSTargetingStrategy> handle(Matcher m) {
     String resultCommand = m.group().substring(1);
     float targetPlaneAngle = Float.parseFloat(resultCommand);
+    computer.setOrbitInclination(targetPlaneAngle);
     CoordSys cs = (CoordSys) computer.getReferenceObject().getCoordSys().clone();
     cs.xRotate(targetPlaneAngle);
     PlanetPlaneChangePlaneAlignProgram planeChangeAlignProgram = new PlanetPlaneChangePlaneAlignProgram(computer, cs.zAxis().getVectorForm());

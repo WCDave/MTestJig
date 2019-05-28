@@ -16,7 +16,7 @@ public class RollProgram extends AFCSTargetingStrategy {
     super.run();
     computer.setAnnunMsg("Roll Program");
     while (!targetReached()) {
-      rocket.adjustRollRate(-1.4f);
+     rocket.adjustRollRate(-computer.rollRateCalc());
       rollDuration++;
       Utils.sleep(500);
     }
@@ -24,7 +24,7 @@ public class RollProgram extends AFCSTargetingStrategy {
     //System.out.println("endroll");
     rollDuration = 2;
     while (!targetReached()) {
-      rocket.adjustRollRate(+1.4f);
+      rocket.adjustRollRate(computer.rollRateCalc());
       rollDuration++;
       Utils.sleep(200);
     }

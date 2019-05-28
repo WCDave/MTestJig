@@ -57,6 +57,7 @@ public class NavComputer extends AbstractInstrument {
   private AbstractComputerDisplayPage activePage;
   private IControlAdapter controlAdapter;
   private float targetAltitude = 105;
+  private float orbitInclination = 53;
 
   private long launchTime;
 
@@ -174,6 +175,25 @@ public class NavComputer extends AbstractInstrument {
 
     gb = new GlassButton("DEMO", 125 + 4 * 15, 145, 37, 13, Color.white, cmd);
     add(gb);
+  }
+
+
+  public float getOrbitInclination() {
+    return orbitInclination;
+  }
+
+  public void setOrbitInclination(float orbitInclination) {
+    this.orbitInclination = orbitInclination;
+  }
+
+  public float rollRateCalc() {
+    /*
+    Answer = 180 - asin((cos(orbitInc)/cos(lat)))      = 120.12231336514 or
+Answer = asin((cos(orbInc)/cos(lat)))            = 59.87768663486
+     */
+    return 1.4f;
+
+    
   }
 
   public Orbit determineOrbitFor(CoordSys cs) {
