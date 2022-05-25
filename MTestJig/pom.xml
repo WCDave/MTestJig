@@ -13,7 +13,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <powermock.version>1.5</powermock.version>
-        <org.springframework.version>4.1.6.RELEASE</org.springframework.version>
+        <org.springframework.version>5.2.22.RELEASE</org.springframework.version>
     </properties>
     <build>
         <plugins>
